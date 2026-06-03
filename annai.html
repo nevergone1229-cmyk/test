@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初心者向けiPhone活用セミナー｜参加者案内</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: #FBF8F1;
+    color: #1a1a1a;
+    font-family: "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+    line-height: 1.7;
+  }
+
+  /* ヒーロー */
+  .hero {
+    background: linear-gradient(135deg, #16365C 60%, #F4A300 100%);
+    color: #fff;
+    text-align: center;
+    padding: 70px 24px 60px;
+  }
+  .hero .hero-tag {
+    display: inline-block;
+    border: 2px solid #F4A300;
+    color: #F4A300;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .14em;
+    padding: 4px 16px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-size: clamp(22px, 4vw, 36px);
+    font-weight: bold;
+    line-height: 1.4;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: normal;
+    color: #F4A300;
+  }
+  .hero .date-info {
+    font-size: 16px;
+    margin-bottom: 32px;
+    opacity: .9;
+  }
+  .btn {
+    display: inline-block;
+    background: #F4A300;
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 14px 44px;
+    border-radius: 50px;
+    text-decoration: none;
+    letter-spacing: .05em;
+    box-shadow: 0 4px 16px rgba(244,163,0,.45);
+    transition: transform .15s, box-shadow .15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(244,163,0,.55); }
+
+  /* コンテナ */
+  .container { max-width: 860px; margin: 0 auto; padding: 0 20px; }
+
+  /* セクション */
+  section { padding: 60px 0; }
+  .section-heading {
+    text-align: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #16365C;
+    margin-bottom: 36px;
+  }
+  .section-heading span {
+    border-bottom: 3px solid #F4A300;
+    padding-bottom: 4px;
+  }
+
+  /* 3つのポイント */
+  .points-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .point-card {
+    flex: 1;
+    min-width: 220px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,.08);
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .point-card .emoji { font-size: 40px; margin-bottom: 12px; display: block; }
+  .point-card h3 {
+    font-size: 16px;
+    font-weight: bold;
+    color: #16365C;
+    margin-bottom: 10px;
+  }
+  .point-card p { font-size: 13px; color: #555; }
+
+  /* FAQ */
+  .faq-section { background: #fff; }
+  .faq-list { display: flex; flex-direction: column; gap: 20px; }
+  .faq-item {
+    background: #FBF8F1;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    overflow: hidden;
+  }
+  .faq-q {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 18px 22px;
+  }
+  .faq-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background: #F4A300;
+    color: #fff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .faq-q p { font-size: 15px; font-weight: bold; color: #16365C; }
+  .faq-a {
+    display: flex;
+    gap: 14px;
+    padding: 0 22px 18px;
+    padding-left: calc(22px + 30px + 14px);
+    font-size: 14px;
+    color: #444;
+  }
+
+  /* 申込み導線 */
+  .cta-section {
+    background: #16365C;
+    color: #fff;
+    text-align: center;
+    padding: 70px 24px;
+  }
+  .cta-section h2 { font-size: 22px; margin-bottom: 14px; }
+  .cta-section p { font-size: 14px; opacity: .85; margin-bottom: 32px; }
+
+  /* フッター */
+  footer {
+    background: #111;
+    color: #aaa;
+    text-align: center;
+    padding: 24px 20px;
+    font-size: 12px;
+  }
+  footer span { color: #F4A300; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-tag">オンライン開催 ／ 初心者歓迎</div>
+  <h1>スマホ、もっと<em>使いこなせる！</em><br>初心者向け iPhone 活用セミナー</h1>
+  <div class="date-info">📅 2026年7月5日（日）13:00〜14:30　／　参加費：1,500円</div>
+  <a class="btn" href="#">今すぐ申し込む</a>
+</div>
+
+<!-- 3つのポイント -->
+<section>
+  <div class="container">
+    <div class="section-heading"><span>このセミナー、3つのポイント</span></div>
+    <div class="points-grid">
+      <div class="point-card">
+        <span class="emoji">📱</span>
+        <h3>基本操作を丁寧に解説</h3>
+        <p>ホーム画面の見かたからアプリの使い方まで、専門用語を使わずわかりやすく説明します。</p>
+      </div>
+      <div class="point-card">
+        <span class="emoji">🗺️</span>
+        <h3>日常で使える実践スキル</h3>
+        <p>地図・写真共有・キャッシュレス決済など、今日からすぐ役立つ操作を体験形式で学べます。</p>
+      </div>
+      <div class="point-card">
+        <span class="emoji">🙋</span>
+        <h3>Q&amp;Aで疑問をその場で解決</h3>
+        <p>セミナー後半に質問タイムを設置。普段聞けない「ちょっとした疑問」もご遠慮なくどうぞ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="container">
+    <div class="section-heading"><span>よくあるご質問</span></div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-badge">Q</span>
+          <p>iPhone を買ったばかりで全然使えていないのですが、大丈夫ですか？</p>
+        </div>
+        <div class="faq-a">はい、まったく問題ありません！本セミナーは「操作がわからない」「何から始めればいいかわからない」という方を対象に設計しています。基本のキから丁寧に解説しますので、安心してご参加ください。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-badge">Q</span>
+          <p>参加に必要な準備はありますか？</p>
+        </div>
+        <div class="faq-a">お手持ちの iPhone（iOS 15以降）と、Zoom アプリのインストールが必要です。また、Apple ID とパスワードをお手元にご用意いただくとスムーズです。詳細は申込み後にメールでご案内します。</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-badge">Q</span>
+          <p>当日参加できなくなった場合、返金はありますか？</p>
+        </div>
+        <div class="faq-a">開催3日前までのキャンセルは全額返金いたします。それ以降のキャンセルにつきましては、開催後に録画アーカイブをお届けする形で対応いたします。</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 申込み導線 -->
+<div class="cta-section">
+  <h2>一緒に「できる！」を増やしませんか？</h2>
+  <p>定員50名・先着順です。お早めにお申し込みください。<br>参加費 1,500円 ／ 2026年7月5日（日）13:00〜14:30</p>
+  <a class="btn" href="#">申し込みフォームへ</a>
+</div>
+
+<footer>
+  <p><span>Produced with Claude Code ✦</span> 主催：スマートライフ推進協会（架空）</p>
+</footer>
+
+</body>
+</html>

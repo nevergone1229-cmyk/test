@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企画書 | 40・50代向けダイエットセミナー</title>
+<style>
+  :root {
+    --navy:  #16365C;
+    --yellow:#F4A300;
+    --cream: #FBF8F1;
+    --white: #FFFFFF;
+    --text:  #1a1a2e;
+    --muted: #556677;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: system-ui, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* ── ページヘッダー ── */
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .header-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .page-header .catch {
+    font-size: 14px;
+    color: var(--yellow);
+    opacity: .95;
+  }
+
+  /* ── コンテナ ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 72px;
+  }
+
+  /* ── セクションカード ── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 32px 30px;
+    margin-bottom: 28px;
+  }
+
+  /* ── セクション見出し（丸バッジ付き） ── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .badge {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .sec-head h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* ── 2列テーブル ── */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 12px 16px; border-bottom: 1px solid #ece7dc; text-align: left; }
+  th { background: #f0f4f8; color: var(--navy); font-weight: 700; width: 28%; }
+  tr:last-child th, tr:last-child td { border-bottom: none; }
+
+  /* ── 背景テキスト ── */
+  .bg-text p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+  .bg-text p:last-child { margin-bottom: 0; }
+
+  /* ── BEFORE → AFTER ── */
+  .ba-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .ba-col {
+    flex: 1;
+    border-radius: 12px;
+    padding: 20px 18px;
+  }
+  .ba-before {
+    background: #f5f0e6;
+    border: 2px solid #d8ccb4;
+  }
+  .ba-after {
+    background: #e8f0f8;
+    border: 2px solid #a4c0dc;
+  }
+  .ba-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ba-before .ba-label { color: #8a7a5a; }
+  .ba-after  .ba-label { color: var(--navy); }
+  .ba-col ul { padding-left: 18px; font-size: 13.5px; }
+  .ba-col ul li { margin-bottom: 7px; }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 26px;
+    color: var(--yellow);
+    font-weight: 900;
+  }
+  @media (max-width: 540px) {
+    .ba-wrap { flex-direction: column; }
+    .ba-arrow { transform: rotate(90deg); padding: 6px 0; }
+  }
+
+  /* ── プログラムテーブル ── */
+  .prog-table th:first-child  { width: 18%; }
+  .prog-table th:nth-child(3) { width: 14%; }
+  .prog-table tr:nth-child(even) td,
+  .prog-table tr:nth-child(even) th { background: #f8f6f2; }
+  .break-row td, .break-row th {
+    background: #fef8e6 !important;
+    color: #8a6820;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* ── チェックリスト ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #ece7dc;
+    font-size: 14.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+
+  /* ── 注意事項 ── */
+  .notes-list { list-style: none; padding: 0; font-size: 14px; color: var(--muted); }
+  .notes-list li {
+    padding: 7px 0 7px 18px;
+    position: relative;
+    border-bottom: 1px solid #ece7dc;
+  }
+  .notes-list li:last-child { border-bottom: none; }
+  .notes-list li::before {
+    content: "●";
+    position: absolute;
+    left: 0;
+    color: var(--yellow);
+    font-size: 10px;
+    top: 10px;
+  }
+
+  /* ── フッター ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.65);
+    text-align: center;
+    padding: 22px 16px;
+    font-size: 12px;
+  }
+  footer span { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- ページヘッダー -->
+<header class="page-header">
+  <div class="header-label">社内向け企画書</div>
+  <h1>40・50代のための正しいダイエットセミナー<br>〜体と向き合い、一生モノの健康習慣を手に入れる〜</h1>
+  <p class="catch">ホルモン変化・代謝低下・正しい食事と運動を科学的に学ぶ3時間</p>
+</header>
+
+<div class="container">
+
+  <!-- ① 開催概要 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">1</div>
+      <h2>開催概要</h2>
+    </div>
+    <table>
+      <tr><th>日時</th><td>2026年9月6日（日）13:00〜16:00（受付開始 12:30）</td></tr>
+      <tr><th>形式</th><td>会場参加（少人数制）＋ オンライン同時配信（Zoom）ハイブリッド</td></tr>
+      <tr><th>定員</th><td>30名（先着順・定員になり次第締切）</td></tr>
+      <tr><th>参加費</th><td>通常 3,000円　／　早期申込（8月22日まで）2,000円</td></tr>
+      <tr><th>対象</th><td>40〜59歳の男女・ダイエットに悩む方・健康診断で数値を指摘された方</td></tr>
+      <tr><th>持参物</th><td>筆記用具・参加費（現金またはクレジットカード払い可）</td></tr>
+    </table>
+  </section>
+
+  <!-- ② 背景・なぜ今やるのか -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">2</div>
+      <h2>背景・なぜ今やるのか</h2>
+    </div>
+    <div class="bg-text">
+      <p>40〜50代はホルモンバランスの変化・基礎代謝の低下・筋肉量の減少が重なり、若い頃と同じ食事や運動ではダイエットが通用しなくなる転換期である。この年代特有の変化を無視したまま厳しい食事制限や激しい運動を続けると、筋肉・骨・代謝へのダメージを招くリスクが高い。</p>
+      <p>正しい知識がないまま流行りのダイエットを繰り返す「ダイエット難民」が増加しており、特に更年期前後の女性や内臓脂肪を指摘された中年男性の間で、科学的根拠のある入門講座への需要が急増している。</p>
+      <p>本セミナーは「痩せる」だけでなく「健康で長く動ける体」を目指す意識を醸成し、一生続けられる食事・運動習慣を身につけてもらうことを目的とする。</p>
+    </div>
+  </section>
+
+  <!-- ③ 受講後のゴール（BEFORE → AFTER） -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">3</div>
+      <h2>受講後のゴール</h2>
+    </div>
+    <div class="ba-wrap">
+      <div class="ba-col ba-before">
+        <div class="ba-label">Before 受講前</div>
+        <ul>
+          <li>若い頃と同じ食事なのに体重が増え続ける</li>
+          <li>運動しても全く痩せなくなった</li>
+          <li>流行りのダイエットでリバウンドを繰り返す</li>
+          <li>膝・腰が痛くて激しい運動ができない</li>
+          <li>健康診断で内臓脂肪・血糖値を指摘された</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-col ba-after">
+        <div class="ba-label">After 受講後</div>
+        <ul>
+          <li>ホルモン変化を理解し、正しいアプローチで体重管理できる</li>
+          <li>自分の代謝に合った食事・運動のバランスを実践できる</li>
+          <li>リバウンドしない生活習慣の仕組みが身についている</li>
+          <li>痛みを出さない安全な運動を継続できる</li>
+          <li>内臓脂肪を効率よく落とす具体策を実行できる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ プログラム構成 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">4</div>
+      <h2>プログラム構成</h2>
+    </div>
+    <table class="prog-table">
+      <thead>
+        <tr><th>時刻</th><th>内容</th><th>所要</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>13:00</td><td>受付・オープニング・自己紹介</td><td>15 分</td></tr>
+        <tr><td>13:15</td><td>第1部：なぜ40・50代は痩せにくいのか？（ホルモン・代謝・脂肪の仕組み）</td><td>45 分</td></tr>
+        <tr><td>14:00</td><td>第2部：正しい食事の考え方（栄養の質・血糖値コントロール・外食対策）</td><td>45 分</td></tr>
+        <tr class="break-row"><td colspan="2">── 休憩 ──</td><td>10 分</td></tr>
+        <tr><td>14:55</td><td>第3部：続けられる運動習慣（筋トレ・有酸素・ながら運動・ストレッチ実演）</td><td>45 分</td></tr>
+        <tr><td>15:40</td><td>個別相談タイム・Q&A（講師・栄養士への質問）</td><td>15 分</td></tr>
+        <tr><td>15:55</td><td>まとめ・行動計画シート記入・アンケート</td><td>5 分</td></tr>
+        <tr><td>16:00</td><td>終了</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ⑤ こんな方におすすめ -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">5</div>
+      <h2>こんな方におすすめ</h2>
+    </div>
+    <ul class="checklist">
+      <li>
+        <div class="check-icon">✓</div>
+        <span>「若い頃と同じ生活なのに太った」「何をしても痩せなくなった」と感じている40〜50代の方</span>
+      </li>
+      <li>
+        <div class="check-icon">✓</div>
+        <span>健康診断で内臓脂肪・血糖値・血圧・コレステロール値を指摘され、食事や運動を見直したい方</span>
+      </li>
+      <li>
+        <div class="check-icon">✓</div>
+        <span>流行りのダイエットでリバウンドを繰り返しており、一生続けられる正しい方法を知りたい方</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ⑥ 持ち物・注意事項 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">6</div>
+      <h2>持ち物・注意事項</h2>
+    </div>
+    <ul class="notes-list">
+      <li>筆記用具をお持ちください（当日テキスト・ワークシートを配布します）</li>
+      <li>参加費（現金またはクレジットカード払い可）をご用意ください</li>
+      <li>運動パートがありますので、動きやすい服装でのご参加を推奨します（普段着でも可）</li>
+      <li>持病・治療中の方は事前にかかりつけ医にご相談の上ご参加ください</li>
+      <li>本セミナーは特定の食品・サプリメント・サービスの販売を目的としていません</li>
+      <li>オンライン参加の方は安定したインターネット環境と Zoom をご準備ください</li>
+    </ul>
+  </section>
+
+  <!-- ⑦ 登壇者・スタッフ構成 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">7</div>
+      <h2>登壇者・スタッフ構成</h2>
+    </div>
+    <table>
+      <thead>
+        <tr><th>役割</th><th>人数</th><th>担当内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>メイン講師（管理栄養士）</td><td>1名</td><td>第1・2部の講義（ホルモン・食事）</td></tr>
+        <tr><td>パーソナルトレーナー</td><td>1名</td><td>第3部の運動指導・ストレッチ実演</td></tr>
+        <tr><td>司会・進行</td><td>1名</td><td>全体進行・時間管理</td></tr>
+        <tr><td>スタッフ（受付・サポート）</td><td>2名</td><td>受付・資料配布・配信技術サポート</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div><!-- /.container -->
+
+<footer>
+  <p>Produced with Claude Code <span>✦</span> 主催：○○○ウェルネス株式会社</p>
+</footer>
+
+</body>
+</html>

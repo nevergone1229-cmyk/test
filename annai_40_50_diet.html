@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参加者向け案内 | 40・50代向けダイエットセミナー</title>
+<style>
+  :root {
+    --navy:  #16365C;
+    --yellow:#F4A300;
+    --cream: #FBF8F1;
+    --white: #FFFFFF;
+    --text:  #1a1a2e;
+    --muted: #556677;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: system-ui, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* ── ヒーローセクション ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e4e8c 55%, var(--yellow) 100%);
+    color: #fff;
+    padding: 72px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(244,163,0,.18) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-label {
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,.6);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 4px 16px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,.9);
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    font-size: clamp(14px, 2.5vw, 18px);
+    opacity: .85;
+    margin-bottom: 28px;
+  }
+  .hero .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    backdrop-filter: blur(4px);
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--yellow);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(244,163,0,.45);
+    transition: transform .15s, box-shadow .15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(244,163,0,.55); }
+
+  /* ── コンテナ ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 20px 72px;
+  }
+
+  /* ── セクション見出し ── */
+  .section-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .section-title span {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--yellow);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* ── 3つのポイント ── */
+  .points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+  @media (max-width: 620px) { .points { grid-template-columns: 1fr; } }
+  .point-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .point-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--yellow);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .point-emoji {
+    font-size: 36px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .point-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .point-card p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* ── FAQ ── */
+  .faq-wrap { margin-bottom: 64px; }
+  .faq-item {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 24px 26px;
+    margin-bottom: 16px;
+  }
+  .faq-q {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .faq-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .faq-q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    padding-top: 4px;
+  }
+  .faq-a {
+    padding-left: 46px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── 申込みセクション ── */
+  .cta-section {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 48px 32px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(22,54,92,.2);
+  }
+  .cta-section h2 {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+  .cta-section p { font-size: 14px; opacity: .8; margin-bottom: 28px; }
+  .cta-deadline {
+    display: inline-block;
+    background: rgba(244,163,0,.2);
+    border: 1px solid rgba(244,163,0,.5);
+    border-radius: 8px;
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    margin-bottom: 24px;
+  }
+
+  /* ── フッター ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  footer span { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- ヒーローセクション -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">参加者募集中</div>
+    <h1>「痩せない」のは、<br>年齢のせいじゃない。</h1>
+    <p class="sub">40・50代のための正しいダイエットセミナー</p>
+    <div class="date-badge">📅　2026年9月6日（日）13:00〜16:00　会場＋オンライン</div>
+    <br>
+    <a href="#apply" class="btn-primary">今すぐ申し込む</a>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 3つのポイント -->
+  <section>
+    <h2 class="section-title">
+      <span>Feature Points</span>
+      このセミナーの3つのポイント
+    </h2>
+    <div class="points">
+      <div class="point-card">
+        <div class="point-num">1</div>
+        <span class="point-emoji">🔬</span>
+        <h3>年齢の変化を科学的に理解</h3>
+        <p>ホルモン・代謝・筋肉量の変化を正しく知ることで、「なぜ痩せにくいか」の本当の理由がわかります。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">2</div>
+        <span class="point-emoji">🥗</span>
+        <h3>食事と運動を同時に学べる</h3>
+        <p>管理栄養士とトレーナーがダブル登壇。食事・運動の両面から40・50代に最適なアプローチを伝授します。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">3</div>
+        <span class="point-emoji">♻️</span>
+        <h3>リバウンドしない習慣を設計</h3>
+        <p>「やせる」だけで終わらない。一生続けられる食事・運動の習慣を、日常に落とし込む具体策まで学べます。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-wrap">
+    <h2 class="section-title">
+      <span>FAQ</span>
+      よくあるご質問
+    </h2>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">膝や腰が痛くて運動が苦手でも参加できますか？</div>
+      </div>
+      <div class="faq-a">
+        はい、大丈夫です。本セミナーでは激しい運動は行いません。関節に負担をかけない安全なストレッチ・筋トレをトレーナーが実演します。痛みがある方に適した運動の選び方もお伝えします。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">更年期の症状がありますが、ダイエットしても大丈夫ですか？</div>
+      </div>
+      <div class="faq-a">
+        更年期のホルモン変化とダイエットの関係も詳しく解説します。この時期に「やってはいけない無理なダイエット」についても学べますので、ぜひご参加ください。持病・治療中の方は事前にかかりつけ医にご相談の上お越しください。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">オンライン参加でも同じ内容を受講できますか？</div>
+      </div>
+      <div class="faq-a">
+        はい。Zoom でリアルタイム配信し、Q&A・個別相談もオンラインで参加できます。資料 PDF・セミナー録画（1週間限定）・LINE グループへの招待も会場参加と同様にご提供します。
+      </div>
+    </div>
+  </section>
+
+  <!-- 申込みセクション -->
+  <section class="cta-section" id="apply">
+    <h2>正しい知識が、体を変える。<br>まず一歩、踏み出しましょう。</h2>
+    <p>定員30名・満席になり次第締切となります。早期割引（2,000円）はお早めに。</p>
+    <div class="cta-deadline">申込締切：2026年8月30日（日）　／　早期割引は8月22日（土）まで</div>
+    <br>
+    <a href="https://example.com/apply" class="btn-primary">申込フォームへ（無料で簡単登録）</a>
+    <p style="margin-top:18px; font-size:12px; opacity:.6;">お電話でのお申込み：000-0000-0000（平日 10:00〜18:00）</p>
+  </section>
+
+</div><!-- /.container -->
+
+<footer>
+  <p>Produced with Claude Code <span>✦</span> 主催：○○○ウェルネス株式会社</p>
+</footer>
+
+</body>
+</html>

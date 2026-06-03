@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>企画書 | 初心者向けiPhone活用セミナー</title>
+<style>
+  :root {
+    --navy:  #16365C;
+    --yellow:#F4A300;
+    --cream: #FBF8F1;
+    --white: #FFFFFF;
+    --text:  #1a1a2e;
+    --muted: #556677;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: system-ui, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* ── ページヘッダー ── */
+  .page-header {
+    background: var(--navy);
+    color: #fff;
+    padding: 52px 24px 44px;
+    text-align: center;
+  }
+  .header-label {
+    display: inline-block;
+    background: var(--yellow);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 16px;
+  }
+  .page-header h1 {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 800;
+    line-height: 1.4;
+    margin-bottom: 12px;
+  }
+  .page-header .catch {
+    font-size: 14px;
+    color: var(--yellow);
+    opacity: .95;
+  }
+
+  /* ── コンテナ ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 40px 20px 72px;
+  }
+
+  /* ── セクションカード ── */
+  .card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 32px 30px;
+    margin-bottom: 28px;
+  }
+
+  /* ── セクション見出し（丸バッジ付き） ── */
+  .sec-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .badge {
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .sec-head h2 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+  }
+
+  /* ── 2列テーブル（開催概要） ── */
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 12px 16px; border-bottom: 1px solid #ece7dc; text-align: left; }
+  th { background: #f0f4f8; color: var(--navy); font-weight: 700; width: 28%; }
+  tr:last-child th, tr:last-child td { border-bottom: none; }
+
+  /* ── 背景・目的テキスト ── */
+  .bg-text p { font-size: 14px; color: var(--muted); margin-bottom: 10px; }
+  .bg-text p:last-child { margin-bottom: 0; }
+
+  /* ── BEFORE → AFTER ── */
+  .ba-wrap {
+    display: flex;
+    align-items: stretch;
+    gap: 4px;
+  }
+  .ba-col {
+    flex: 1;
+    border-radius: 12px;
+    padding: 20px 18px;
+  }
+  .ba-before {
+    background: #f5f0e6;
+    border: 2px solid #d8ccb4;
+  }
+  .ba-after {
+    background: #e8f0f8;
+    border: 2px solid #a4c0dc;
+  }
+  .ba-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .ba-before .ba-label { color: #8a7a5a; }
+  .ba-after  .ba-label { color: var(--navy); }
+  .ba-col ul { padding-left: 18px; font-size: 13.5px; }
+  .ba-col ul li { margin-bottom: 7px; }
+  .ba-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    font-size: 26px;
+    color: var(--yellow);
+    font-weight: 900;
+  }
+  @media (max-width: 540px) {
+    .ba-wrap { flex-direction: column; }
+    .ba-arrow { transform: rotate(90deg); padding: 6px 0; }
+  }
+
+  /* ── プログラムテーブル ── */
+  .prog-table th:first-child  { width: 20%; }
+  .prog-table th:nth-child(3) { width: 14%; }
+  .prog-table tr:nth-child(even) td,
+  .prog-table tr:nth-child(even) th { background: #f8f6f2; }
+  .break-row td, .break-row th {
+    background: #fef8e6 !important;
+    color: #8a6820;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* ── チェックリスト ── */
+  .checklist { list-style: none; padding: 0; }
+  .checklist li {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid #ece7dc;
+    font-size: 14.5px;
+  }
+  .checklist li:last-child { border-bottom: none; }
+  .check-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 13px;
+    margin-top: 1px;
+  }
+
+  /* ── 注意事項 ── */
+  .notes-list { list-style: none; padding: 0; font-size: 14px; color: var(--muted); }
+  .notes-list li { padding: 7px 0 7px 18px; position: relative; border-bottom: 1px solid #ece7dc; }
+  .notes-list li:last-child { border-bottom: none; }
+  .notes-list li::before { content: "●"; position: absolute; left: 0; color: var(--yellow); font-size: 10px; top: 10px; }
+
+  /* ── フッター ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.65);
+    text-align: center;
+    padding: 22px 16px;
+    font-size: 12px;
+  }
+  footer span { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- ページヘッダー -->
+<header class="page-header">
+  <div class="header-label">社内向け企画書</div>
+  <h1>初心者向けiPhone活用セミナー<br>〜はじめてのスマホが、もっと身近になる3時間〜</h1>
+  <p class="catch">基本操作から便利アプリ・セキュリティ設定まで、実機を使ってゼロから学べる</p>
+</header>
+
+<div class="container">
+
+  <!-- ① 開催概要 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">1</div>
+      <h2>開催概要</h2>
+    </div>
+    <table>
+      <tr><th>日時</th><td>2026年8月2日（日）13:00〜16:30（受付開始 12:45）</td></tr>
+      <tr><th>形式</th><td>会場参加（少人数制）＋ オンライン同時配信（Zoom）</td></tr>
+      <tr><th>定員</th><td>15名（先着順・定員になり次第締切）</td></tr>
+      <tr><th>参加費</th><td>通常 2,000円　／　早期申込（7月19日まで）1,500円</td></tr>
+      <tr><th>対象</th><td>iPhone初心者・スマートフォン未経験者・シニア層</td></tr>
+      <tr><th>持参物</th><td>ご自身のiPhone（お持ちでない方は貸出あり）・筆記用具</td></tr>
+    </table>
+  </section>
+
+  <!-- ② 背景・なぜ今やるのか -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">2</div>
+      <h2>背景・なぜ今やるのか</h2>
+    </div>
+    <div class="bg-text">
+      <p>スマートフォンの普及率は国内で80%を超えたが、「持っているが使いこなせていない」と感じるユーザー、特にシニア層や初購入者の層では依然として高い割合が課題となっている。</p>
+      <p>行政手続きのデジタル化・キャッシュレス決済の拡大・LINEによる家族連絡など、スマホの基礎スキルは今や生活インフラの一部であり、丁寧な入門講座への社会的ニーズは急増している。</p>
+      <p>本セミナーは「誰かに一から教えてほしい」という声に応え、実機操作を通じて自信と安心を持ってもらうことを目的とする。</p>
+    </div>
+  </section>
+
+  <!-- ③ 受講後のゴール（BEFORE → AFTER） -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">3</div>
+      <h2>受講後のゴール</h2>
+    </div>
+    <div class="ba-wrap">
+      <div class="ba-col ba-before">
+        <div class="ba-label">Before 受講前</div>
+        <ul>
+          <li>電話とLINEしか使えない</li>
+          <li>写真の撮り方・保存がわからない</li>
+          <li>見知らぬアプリは怖くて触れない</li>
+          <li>詐欺・ウイルスが不安で使いづらい</li>
+          <li>調べたいことがあっても検索できない</li>
+        </ul>
+      </div>
+      <div class="ba-arrow">→</div>
+      <div class="ba-col ba-after">
+        <div class="ba-label">After 受講後</div>
+        <ul>
+          <li>地図・乗換・天気をスムーズに活用できる</li>
+          <li>写真を撮り、家族にきれいに共有できる</li>
+          <li>安心して新しいアプリを追加・活用できる</li>
+          <li>セキュリティ設定で安全に使いこなせる</li>
+          <li>Google検索でスムーズに情報収集できる</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ④ プログラム構成 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">4</div>
+      <h2>プログラム構成</h2>
+    </div>
+    <table class="prog-table">
+      <thead>
+        <tr><th>時刻</th><th>内容</th><th>所要</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>13:00</td><td>受付・オープニング・自己紹介</td><td>15 分</td></tr>
+        <tr><td>13:15</td><td>第1部：iPhone基本操作（画面の見方・文字入力・設定アプリ）</td><td>45 分</td></tr>
+        <tr><td>14:00</td><td>第2部：電話・メッセージ・カメラ・写真アルバムの使い方</td><td>40 分</td></tr>
+        <tr class="break-row"><td colspan="2">── 休憩 ──</td><td>10 分</td></tr>
+        <tr><td>14:50</td><td>第3部：便利アプリ活用（LINE・Googleマップ・乗換案内・天気）</td><td>40 分</td></tr>
+        <tr><td>15:30</td><td>第4部：セキュリティ設定・詐欺対策・困ったときの対処法</td><td>30 分</td></tr>
+        <tr><td>16:00</td><td>個別ハンズオン練習・Q&A</td><td>20 分</td></tr>
+        <tr><td>16:20</td><td>まとめ・行動計画シート記入・アンケート</td><td>10 分</td></tr>
+        <tr><td>16:30</td><td>終了</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ⑤ こんな方におすすめ -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">5</div>
+      <h2>こんな方におすすめ</h2>
+    </div>
+    <ul class="checklist">
+      <li>
+        <div class="check-icon">✓</div>
+        <span>iPhoneを買ったばかりで「何から始めればいいかわからない」方</span>
+      </li>
+      <li>
+        <div class="check-icon">✓</div>
+        <span>「LINEと電話しか使っていない」と感じており、もっと活用したいシニアの方</span>
+      </li>
+      <li>
+        <div class="check-icon">✓</div>
+        <span>スマホに苦手意識があり、誰かにマンツーマンで一から教えてもらいたい方</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ⑥ 持ち物・注意事項 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">6</div>
+      <h2>持ち物・注意事項</h2>
+    </div>
+    <ul class="notes-list">
+      <li>ご自身のiPhoneをお持ちください（お持ちでない方は当日貸出いたします）</li>
+      <li>参加費（現金またはクレジットカード払い可）・筆記用具をお持ちください</li>
+      <li>当日までにiPhoneを満充電にしてご参加ください</li>
+      <li>Apple ID（Appleアカウント）のパスワードを事前にご確認の上ご参加ください</li>
+      <li>会場内での写真・動画撮影は他の参加者のプライバシー保護のため禁止とします</li>
+      <li>持病・体調不良の場合はご無理をなさらず、オンライン参加または次回にご参加ください</li>
+    </ul>
+  </section>
+
+  <!-- ⑦ 登壇者・スタッフ構成 -->
+  <section class="card">
+    <div class="sec-head">
+      <div class="badge">7</div>
+      <h2>登壇者・スタッフ構成</h2>
+    </div>
+    <table>
+      <thead>
+        <tr><th>役割</th><th>人数</th><th>担当内容</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>メイン講師（ITインストラクター）</td><td>1名</td><td>全プログラムの講義・実演</td></tr>
+        <tr><td>サポートスタッフ</td><td>2名</td><td>個別補助・質問対応・貸出機器管理</td></tr>
+        <tr><td>司会・進行</td><td>1名</td><td>全体進行・時間管理</td></tr>
+        <tr><td>受付スタッフ</td><td>1名</td><td>受付・資料配布・配信技術サポート</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+</div><!-- /.container -->
+
+<footer>
+  <p>Produced with Claude Code <span>✦</span> 主催：○○○デジタルサポート株式会社</p>
+</footer>
+
+</body>
+</html>

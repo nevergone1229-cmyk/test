@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>参加者向け案内 | 初心者向けiPhone活用セミナー</title>
+<style>
+  :root {
+    --navy:  #16365C;
+    --yellow:#F4A300;
+    --cream: #FBF8F1;
+    --white: #FFFFFF;
+    --text:  #1a1a2e;
+    --muted: #556677;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--cream);
+    font-family: system-ui, 'Hiragino Kaku Gothic ProN', 'Yu Gothic', 'Meiryo', sans-serif;
+    color: var(--text);
+    line-height: 1.75;
+  }
+
+  /* ── ヒーローセクション ── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, #1e4e8c 55%, var(--yellow) 100%);
+    color: #fff;
+    padding: 72px 24px 64px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 40%, rgba(244,163,0,.18) 0%, transparent 60%);
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .hero-label {
+    display: inline-block;
+    border: 2px solid rgba(255,255,255,.6);
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    padding: 4px 16px;
+    margin-bottom: 20px;
+    color: rgba(255,255,255,.9);
+  }
+  .hero h1 {
+    font-size: clamp(22px, 5vw, 36px);
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 8px;
+  }
+  .hero .sub {
+    font-size: clamp(14px, 2.5vw, 18px);
+    opacity: .85;
+    margin-bottom: 28px;
+  }
+  .hero .date-badge {
+    display: inline-block;
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 8px;
+    padding: 10px 24px;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 32px;
+    backdrop-filter: blur(4px);
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--yellow);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 14px 40px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 4px 18px rgba(244,163,0,.45);
+    transition: transform .15s, box-shadow .15s;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(244,163,0,.55); }
+
+  /* ── コンテナ ── */
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 56px 20px 72px;
+  }
+
+  /* ── セクション見出し ── */
+  .section-title {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 800;
+    color: var(--navy);
+    margin-bottom: 32px;
+  }
+  .section-title span {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--yellow);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  /* ── 3つのポイント ── */
+  .points {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 64px;
+  }
+  @media (max-width: 620px) { .points { grid-template-columns: 1fr; } }
+  .point-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 28px 22px;
+    text-align: center;
+  }
+  .point-emoji {
+    font-size: 36px;
+    margin-bottom: 14px;
+    display: block;
+  }
+  .point-card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 10px;
+  }
+  .point-card p {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+  .point-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    background: var(--yellow);
+    border-radius: 50%;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+
+  /* ── FAQ ── */
+  .faq-wrap { margin-bottom: 64px; }
+  .faq-item {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: 0 2px 14px rgba(22,54,92,.09);
+    padding: 24px 26px;
+    margin-bottom: 16px;
+  }
+  .faq-q {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .faq-badge {
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    background: var(--yellow);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .faq-q-text {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--navy);
+    padding-top: 4px;
+  }
+  .faq-a {
+    padding-left: 46px;
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── 申込みセクション ── */
+  .cta-section {
+    background: var(--navy);
+    border-radius: 20px;
+    padding: 48px 32px;
+    text-align: center;
+    color: #fff;
+    box-shadow: 0 4px 24px rgba(22,54,92,.2);
+  }
+  .cta-section h2 {
+    font-size: clamp(18px, 3vw, 24px);
+    font-weight: 800;
+    margin-bottom: 12px;
+    line-height: 1.45;
+  }
+  .cta-section p {
+    font-size: 14px;
+    opacity: .8;
+    margin-bottom: 28px;
+  }
+  .cta-deadline {
+    display: inline-block;
+    background: rgba(244,163,0,.2);
+    border: 1px solid rgba(244,163,0,.5);
+    border-radius: 8px;
+    color: var(--yellow);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 8px 20px;
+    margin-bottom: 24px;
+  }
+
+  /* ── フッター ── */
+  footer {
+    background: var(--navy);
+    color: rgba(255,255,255,.6);
+    text-align: center;
+    padding: 24px 16px;
+    font-size: 12px;
+    margin-top: 60px;
+  }
+  footer span { color: var(--yellow); }
+</style>
+</head>
+<body>
+
+<!-- ヒーローセクション -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">参加者募集中</div>
+    <h1>はじめてのiPhoneが、<br>もっと楽しくなる</h1>
+    <p class="sub">初心者向けiPhone活用セミナー</p>
+    <div class="date-badge">📅　2026年8月2日（日）13:00〜16:30　会場＋オンライン</div>
+    <br>
+    <a href="#apply" class="btn-primary">今すぐ申し込む</a>
+  </div>
+</section>
+
+<div class="container">
+
+  <!-- 3つのポイント -->
+  <section>
+    <h2 class="section-title">
+      <span>Feature Points</span>
+      このセミナーの3つのポイント
+    </h2>
+    <div class="points">
+      <div class="point-card">
+        <div class="point-num">1</div>
+        <span class="point-emoji">📱</span>
+        <h3>実機で学べる</h3>
+        <p>ご自身のiPhoneを使って操作を練習。「見るだけ」ではなく「できる」になるまで丁寧にサポートします。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">2</div>
+        <span class="point-emoji">👥</span>
+        <h3>少人数制で安心</h3>
+        <p>定員15名の少人数制。わからないことはその場で気軽に質問OK。置いてきぼりにしません。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-num">3</div>
+        <span class="point-emoji">🔒</span>
+        <h3>セキュリティも学べる</h3>
+        <p>詐欺・不審アプリ対策の基本まで丁寧に解説。安心・安全なスマホライフをサポートします。</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-wrap">
+    <h2 class="section-title">
+      <span>FAQ</span>
+      よくあるご質問
+    </h2>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">iPhoneを持っていなくても参加できますか？</div>
+      </div>
+      <div class="faq-a">
+        はい、大丈夫です。当日貸出用のiPhoneをご用意しています。ご自身のiPhoneをお持ちの方は、ぜひご持参ください。使い慣れた端末で練習するほうが上達も早いです。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">スマートフォンをまったく使ったことがなくても大丈夫ですか？</div>
+      </div>
+      <div class="faq-a">
+        もちろんです！本セミナーは完全な初心者の方を対象としています。電源の入れ方・画面の触り方からスタートしますので、どうぞご安心ください。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-badge">Q</div>
+        <div class="faq-q-text">Apple ID（Appleアカウント）がない場合はどうすればよいですか？</div>
+      </div>
+      <div class="faq-a">
+        当日スタッフがアカウント作成をサポートします。使用可能なメールアドレスをひとつご用意の上、お越しください。すでにお持ちの方はパスワードを事前にご確認ください。
+      </div>
+    </div>
+  </section>
+
+  <!-- 申込みセクション -->
+  <section class="cta-section" id="apply">
+    <h2>iPhoneを、もっと自分のものに。<br>一緒に学びましょう。</h2>
+    <p>定員15名・少人数制のため、お早めのお申し込みをおすすめします。</p>
+    <div class="cta-deadline">申込締切：2026年7月26日（日）　／　早期割引は7月19日（日）まで</div>
+    <br>
+    <a href="https://example.com/apply" class="btn-primary">申込フォームへ（無料で簡単登録）</a>
+    <p style="margin-top:18px; font-size:12px; opacity:.6;">お電話でのお申込み：000-0000-0000（平日 10:00〜18:00）</p>
+  </section>
+
+</div><!-- /.container -->
+
+<footer>
+  <p>Produced with Claude Code <span>✦</span> 主催：○○○デジタルサポート株式会社</p>
+</footer>
+
+</body>
+</html>

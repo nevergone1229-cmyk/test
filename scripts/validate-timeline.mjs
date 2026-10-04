@@ -31,6 +31,7 @@ export const validateTimeline = (timeline, { requireConfirmed = false } = {}) =>
       }
       if (!(clip.start >= 0)) errors.push(`${label}: start must be >= 0`);
       if (!(clip.end > clip.start)) errors.push(`${label}: end must be after start`);
+      if (clip.hold !== undefined && !(clip.hold >= 0)) errors.push(`${label}: hold must be >= 0`);
       const type = asset.type ?? "video";
       if (type === "video" && clip.end > asset.duration + 0.05) {
         errors.push(`${label}: end ${clip.end}s is past the clip length ${asset.duration}s`);

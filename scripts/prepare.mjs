@@ -4,7 +4,9 @@
 //
 // Videos: trimmed, rotation applied, HDR tone-mapped to SDR, scaled to fill the
 // frame. Images: EXIF orientation applied, held for the clip length. Clips
-// without sound get a silent track so every clip has the same layout.
+// without sound get a silent track so every clip has the same layout. A video
+// clip with `hold` (added when fitting narration) freezes its last frame for
+// that many extra seconds, with silence.
 import fs from "node:fs";
 import path from "node:path";
 import {
@@ -18,9 +20,8 @@ import {
 
 export const clipFileName = (index) => `clip-${String(index + 1).padStart(2, "0")}.mp4`;
 
-export const prepare = (id, materialsDir) => {
+export const prepare = (id, materialsDir, timeline = readJson(projectPaths(id).timeline)) => {
   const paths = projectPaths(id);
-  const timeline = readJson(paths.timeline);
   const { width, height, fps } = timeline.video;
   const fill = `scale=${width}:${height}:force_original_aspect_ratio=increase,crop=${width}:${height},fps=${fps}`;
   const encode = [
@@ -54,6 +55,22 @@ export const prepare = (id, materialsDir) => {
         "-map", "0:v:0", "-map", "1:a:0", "-t", String(duration),
         "-movflags", "+faststart", out,
       ]);
+    } else if (clip.hold) {
+      // Trim on the input side so the clip's end is the end of the stream,
+      // where tpad/apad add the frozen frame and silence.
+      const info = probe(src);
+      const vf = `${info.hdr ? `${TONEMAP},` : ""}${fill},tpad=stop_mode=clone:stop_duration=${clip.hold}`;
+      const total = String(duration + clip.hold);
+      run("ffmpeg", [
+        "-v", "error", "-y", "-ss", String(clip.start), "-t", String(duration), "-i", src,
+        ...(info.hasAudio ? [] : silence),
+        "-vf", vf,
+        ...(info.hasAudio ? ["-af", "apad"] : []),
+        ...encode,
+        "-map", "0:v:0", "-map", info.hasAudio ? "0:a:0" : "1:a:0",
+        "-t", total,
+        "-movflags", "+faststart", out,
+      ]);
     } else {
       const info = probe(src);
       const vf = `${info.hdr ? `${TONEMAP},` : ""}${fill}`;
@@ -68,7 +85,8 @@ export const prepare = (id, materialsDir) => {
         "-movflags", "+faststart", out,
       ]);
     }
-    console.log(`${clipFileName(index)} <- ${asset.file} [${clip.start}-${clip.end}] (${clip.segment})`);
+    const hold = clip.hold ? ` +${clip.hold}s hold` : "";
+    console.log(`${clipFileName(index)} <- ${asset.file} [${clip.start}-${clip.end}]${hold} (${clip.segment})`);
   });
   return clips.length;
 };

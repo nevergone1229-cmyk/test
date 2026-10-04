@@ -1,12 +1,16 @@
-// Generate narration for each script line with the standard narration voice.
+// Generate narration for each telop with the standard narration voice.
 // Usage: node scripts/narrate.mjs <project id>
 //
-// Reads data/<id>/script.txt (one telop per line) and calls Gemini TTS with
-// DEFAULT_NARRATION.voice. Writes work/<id>/narration/N01.wav, N02.wav, … and
-// data/<id>/narration.json. Needs GEMINI_API_KEY.
+// Reads the telops in data/<id>/timeline.json and calls Gemini TTS with
+// DEFAULT_NARRATION.voice. Writes work/<id>/narration/<telop id>.wav and
+// data/<id>/narration.json, then prints how render will fit each telop's clips
+// to its narration. Needs GEMINI_API_KEY. Run it again after changing a telop.
+// Silence before and after the speech is trimmed: TTS sometimes returns many
+// seconds of trailing silence, which would otherwise stretch the video.
 import fs from "node:fs";
 import path from "node:path";
-import { DEFAULT_NARRATION, ROOT, projectPaths, round, run, writeJson } from "./lib/project.mjs";
+import { fitNarration } from "./lib/narration.mjs";
+import { DEFAULT_NARRATION, ROOT, projectPaths, readJson, round, run, writeJson } from "./lib/project.mjs";
 
 const [id] = process.argv.slice(2);
 if (!id) {
@@ -19,11 +23,7 @@ if (!apiKey) {
   process.exit(1);
 }
 const paths = projectPaths(id);
-const lines = fs
-  .readFileSync(paths.script, "utf8")
-  .split("\n")
-  .map((line) => line.trim())
-  .filter(Boolean);
+const timeline = readJson(paths.timeline);
 const outDir = path.join(paths.work, "narration");
 fs.mkdirSync(outDir, { recursive: true });
 
@@ -53,16 +53,31 @@ const synthesize = async (text) => {
   return Buffer.from(audio.data, "base64");
 };
 
-const items = [];
-for (const [index, text] of lines.entries()) {
-  const file = path.join(outDir, `N${String(index + 1).padStart(2, "0")}.wav`);
-  fs.writeFileSync(file, await synthesize(text));
+// Trim silence at both ends (reverse, trim the start, reverse back).
+const TRIM = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05";
+const trimSilence = (raw, file) =>
+  run("ffmpeg", ["-v", "error", "-y", "-i", raw, "-af", `${TRIM},areverse,${TRIM},areverse`, "-c:a", "pcm_s16le", file]);
+
+const telops = [];
+for (const { id: telopId, text } of timeline.telops) {
+  const file = path.join(outDir, `${telopId}.wav`);
+  const raw = path.join(outDir, `${telopId}.raw.wav`);
+  fs.writeFileSync(raw, await synthesize(text));
+  trimSilence(raw, file);
+  fs.rmSync(raw);
   const duration = Number(
     run("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]),
   );
-  items.push({ index: index + 1, text, file: path.relative(ROOT, file), duration: round(duration) });
-  console.log(`${path.basename(file)}  ${round(duration)}s  ${text}`);
+  telops.push({ id: telopId, text, file: path.relative(ROOT, file), duration: round(duration) });
+  console.log(`${telopId}  ${round(duration)}s  ${text}`);
 }
 
-writeJson(paths.narration, { id, voice, model, lines: items });
+const narration = { id, voice, model, telops };
+writeJson(paths.narration, narration);
 console.log(`wrote ${paths.narration}`);
+
+const { changes } = fitNarration(timeline, narration, DEFAULT_NARRATION);
+for (const c of changes) {
+  const hold = c.hold ? `, last frame held ${c.hold}s` : "";
+  console.log(`render will lengthen ${c.telop}: ${c.from}s → ${c.to}s (clip ${c.clip} to ${c.end}s${hold})`);
+}

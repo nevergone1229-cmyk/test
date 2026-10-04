@@ -83,6 +83,22 @@ scripts/codex-second-opinion.sh <id>   # → data/<id>/codex-opinion.md
 - 確定したら `timeline.json` の `status` を `"confirmed"` にする。
   `npm run draft` は確定済みの timeline を `--force` なしでは上書きしない。
 
+## 4b. ナレーションを作る(ユーザーが頼んだときだけ)
+
+timeline を確定してから行う。
+
+```bash
+npm run narrate -- <id>   # GEMINI_API_KEY が必要
+```
+
+- `timeline.json` のテロップごとに、その `text` を標準ナレーション音声(下の「固定の設定」)で読み上げる。
+  音声の前後の無音は切り詰める(TTSが数十秒の無音を付けて返すことがあるため)。
+- 出力: `work/<id>/narration/<テロップID>.wav` と、テロップ・秒数・使った声の一覧 `data/<id>/narration.json`。
+  実行のたびに全テロップを作り直す。テロップの文言を変えたら必ず再実行する
+  (古いナレーションのままだと render が止まる)。
+- 最後に、ナレーションに合わせて render が延ばすテロップを表示する。これをユーザーに見せる。
+- 別の声を使うのはユーザーが指定したときだけ。APIキーは出力しない。
+
 ## 5. レンダリングする(ユーザーが頼んだときだけ)
 
 ```bash
@@ -90,27 +106,23 @@ npm run render -- <id> <素材ディレクトリ>
 ```
 
 - status が confirmed でないと止まる(意図どおり)。
+- `data/<id>/narration.json` があれば、ナレーションを自動で合成する:
+  - 各テロップのナレーションは、テロップが出てから0.2秒後に始まる。
+  - ナレーションが流れている間は、元動画の音量を0.25倍(約−12dB)に下げる(0.2秒かけて上げ下げ)。消音はしない。
+  - 前後の余白(0.2秒＋0.4秒)を含めてナレーションがテロップの尺に収まらないときは、そのテロップの最後のクリップを延ばす。
+    画像は表示を延ばし、動画は素材の続きを使い、素材の終わりまで来たら最後のコマで止める(`hold`、その間の元音声は無音)。
+    クリップを短くすることはない。
+  - `timeline.json` 自体は書き換えない。実際に使った並びは `work/<id>/timeline.fitted.json`。
+- ナレーションを入れたくないときは `data/<id>/narration.json` を消してから render する。
 - 出力: `out/<id>.mp4` と、各クリップ中央のコマを並べた `out/<id>-check.jpg`。
 - `out/<id>-check.jpg` を Read で見て、順番・テロップ・色を確認してから、
   `out/<id>.mp4` を SendUserFile(display: render)で渡す。
 - Remotion が出す「Memory reported by CGroup…」の警告は無害。
 
-## ナレーションを作る(ユーザーが頼んだときだけ)
-
-```bash
-npm run narrate -- <id>   # GEMINI_API_KEY が必要
-```
-
-- `data/<id>/script.txt` の1行ごとに、標準ナレーション音声(下の「固定の設定」)で読み上げる。
-- 出力: `work/<id>/narration/N01.wav`… と、行・秒数・使った声の一覧 `data/<id>/narration.json`。
-  実行のたびに全行を作り直す。
-- 別の声を使うのはユーザーが指定したときだけ。APIキーは出力しない。
-- 動画への合成はまだ自動化していない(レンダリングの音声は下の「固定の設定」のまま)。
-
 ## 6. 保存する
 
 - `data/<id>/`(script.txt, assets.json, candidates.json, candidates.md, timeline.json,
-  あれば codex-opinion.md)をコミットして、指定ブランチに push する。
+  あれば codex-opinion.md, narration.json)をコミットして、指定ブランチに push する。
 - 素材・`public/<id>/`・`work/`・`out/` は Git に入れない(.gitignore 済み)。
 
 ## 固定の設定(ユーザーが変更を頼まない限り変えない)
@@ -122,6 +134,7 @@ test01 で承認された設定。変更するときは下の「回帰チェッ�
 | 画面 | 1080×1920、30fps | `scripts/lib/project.mjs` の `DEFAULT_VIDEO` |
 | テロップ | 画面中央、白文字＋黒縁(14px)、IPAゴシック太字76px。長い行は1行に収まるよう縮小 | `src/TelopVideo.tsx` |
 | 音声 | 元動画の音声を残す。BGMなし。音声の無いクリップには無音トラック | `scripts/prepare.mjs` |
+| ナレーションの合成 | テロップ表示の0.2秒後に開始、後ろに0.4秒の余白。ナレーション中は元音声を0.25倍(0.2秒で上げ下げ) | `DEFAULT_NARRATION`, `src/TelopVideo.tsx`, `scripts/lib/narration.mjs` |
 | ナレーション音声 | `voice_7vk8m4sbxbks`(ユーザー本人の複製音声、ja-JP)、`gemini-3.8-flash-tts` | `scripts/lib/project.mjs` の `DEFAULT_NARRATION` |
 | 色 | HDR(HLG/PQ)素材は SDR BT.709 にトーンマッピング | `scripts/lib/project.mjs` の `TONEMAP` |
 | 画像 | 3秒表示、画面いっぱいに切り抜き、EXIFの回転を反映 | `DEFAULT_IMAGE_SECONDS`, `prepare.mjs` |
@@ -134,7 +147,7 @@ test01 の素材が手元にあるときに行う。変更前の `out/test01.mp4
 コピーしてから、変更後に再レンダリングして比較する:
 
 ```bash
-npm test   # 型チェック + 全 timeline.json の検証
+npm test   # 型チェック + 単体テスト + 全 timeline.json の検証
 npm run render -- test01 <test01の素材ディレクトリ>
 ffmpeg -i out/test01.mp4 -i work/test01-baseline.mp4 -lavfi "[0:v][1:v]ssim" -f null - 2>&1 | grep SSIM
 ```

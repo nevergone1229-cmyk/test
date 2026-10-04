@@ -19,9 +19,15 @@ export const DEFAULT_MAX_CLIP_SECONDS = 4;
 
 // Standard narration voice: the user's replicated voice registered with the
 // Gemini Voices API (store: true, ja-JP). Narration from scripts uses this.
+// While narration plays, the clips' own sound is lowered to duckVolume (never
+// muted), fading over rampSeconds.
 export const DEFAULT_NARRATION = {
   voice: "voice_7vk8m4sbxbks",
   model: "gemini-3.8-flash-tts",
+  leadSeconds: 0.2,
+  tailSeconds: 0.4,
+  duckVolume: 0.25,
+  rampSeconds: 0.2,
 };
 
 // iPhone HDR (HLG / BT.2020) footage, tone-mapped to SDR BT.709. These are the

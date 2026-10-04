@@ -132,10 +132,10 @@ test01 で承認された設定。変更するときは下の「回帰チェッ�
 | 項目 | 値 | 場所 |
 |---|---|---|
 | 画面 | 1080×1920、30fps | `scripts/lib/project.mjs` の `DEFAULT_VIDEO` |
-| テロップ | 画面中央、白文字＋黒縁(14px)、IPAゴシック太字76px。長い行は1行に収まるよう縮小 | `src/TelopVideo.tsx` |
+| テロップ | 画面中央、白文字＋黒縁(14px)、IPAゴシック太字76pxで全テロップ同じ大きさ。入らない行は文節の切れ目で折り返す。句読点は表示しない(空白にする) | `src/TelopVideo.tsx` |
 | 音声 | 元動画の音声を残す。BGMなし。音声の無いクリップには無音トラック | `scripts/prepare.mjs` |
 | ナレーションの合成 | テロップ表示の0.2秒後に開始、後ろに0.4秒の余白。ナレーション中は元音声を0.25倍(0.2秒で上げ下げ) | `DEFAULT_NARRATION`, `src/TelopVideo.tsx`, `scripts/lib/narration.mjs` |
-| ナレーション音声 | `voice_7vk8m4sbxbks`(ユーザー本人の複製音声、ja-JP)、`gemini-3.8-flash-tts` | `scripts/lib/project.mjs` の `DEFAULT_NARRATION` |
+| ナレーション音声 | `voice_7vk8m4sbxbks`(ユーザー本人の複製音声、ja-JP)、`gemini-3.8-flash-tts`、1.2倍速 | `scripts/lib/project.mjs` の `DEFAULT_NARRATION` |
 | 色 | HDR(HLG/PQ)素材は SDR BT.709 にトーンマッピング | `scripts/lib/project.mjs` の `TONEMAP` |
 | 画像 | 3秒表示、画面いっぱいに切り抜き、EXIFの回転を反映 | `DEFAULT_IMAGE_SECONDS`, `prepare.mjs` |
 | 動画クリップの初期長さ | 最大4秒 | `DEFAULT_MAX_CLIP_SECONDS` |

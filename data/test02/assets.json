@@ -47,7 +47,7 @@
         {
           "id": "G",
           "start": 2.9,
-          "end": 8.0,
+          "end": 8,
           "description": "表示が「200℃」に変わり、指でボタンを押している",
           "tags": [
             "操作パネル",
@@ -59,7 +59,7 @@
         },
         {
           "id": "H",
-          "start": 8.0,
+          "start": 8,
           "end": 17.68,
           "description": "手を離したあとの操作パネル。「200℃」と「05 min」が交互に表示され、ファンのようなマークが点灯",
           "tags": [
@@ -152,6 +152,66 @@
       "hdr": true,
       "hasAudio": true,
       "sceneChanges": []
+    },
+    "oil-cut": {
+      "file": "oil-cut.png",
+      "type": "image",
+      "sheet": "../../work/test02/sheets/oil-cut.jpg",
+      "segments": [
+        {
+          "id": "P",
+          "description": "商品ページ画像:ナゲットとバスケットに落ちた油。「油なしで、カラッと簡単」「95%油分カット」「60%カロリーカット」",
+          "tags": [
+            "商品画像",
+            "油",
+            "95%油分カット",
+            "カラッと",
+            "ナゲット"
+          ]
+        }
+      ],
+      "width": 540,
+      "height": 960
+    },
+    "product-hero": {
+      "file": "product-hero.png",
+      "type": "image",
+      "sheet": "../../work/test02/sheets/product-hero.jpg",
+      "segments": [
+        {
+          "id": "R",
+          "description": "商品ページ画像:黒の本体と料理。「秋セール」「数量限定」「2026年リニューアル」「+2.5年保証」",
+          "tags": [
+            "商品画像",
+            "本体",
+            "セール",
+            "数量限定",
+            "締め"
+          ]
+        }
+      ],
+      "width": 540,
+      "height": 960
+    },
+    "recipe-book": {
+      "file": "recipe-book.png",
+      "type": "image",
+      "sheet": "../../work/test02/sheets/recipe-book.jpg",
+      "segments": [
+        {
+          "id": "Q",
+          "description": "商品ページ画像:緑の本体、野菜・鶏肉、専属レシピブック。「専属レシピブック付き」の文字",
+          "tags": [
+            "商品画像",
+            "レシピブック",
+            "野菜",
+            "ヘルシー",
+            "本体"
+          ]
+        }
+      ],
+      "width": 540,
+      "height": 960
     }
   }
 }

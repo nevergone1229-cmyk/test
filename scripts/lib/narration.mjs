@@ -14,6 +14,9 @@ const clipSeconds = (clip) => clip.end - clip.start + (clip.hold ?? 0);
 
 export const fitNarration = (timeline, narration, settings) => {
   const { leadSeconds, tailSeconds, duckVolume, rampSeconds } = settings;
+  if ((narration.speed ?? 1) !== (settings.speed ?? 1)) {
+    throw new Error(`narration was made at speed ${narration.speed ?? 1}, not ${settings.speed ?? 1}; run npm run narrate`);
+  }
   const byId = new Map(narration.telops.map((n) => [n.id, n]));
   const changes = [];
 

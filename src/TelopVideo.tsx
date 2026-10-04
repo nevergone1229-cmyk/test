@@ -50,12 +50,18 @@ export const timelineDuration = (timeline: Timeline) =>
     .reduce((sum, c) => sum + clipFrames(c, timeline.video.fps), 0);
 
 const TELOP_MAX_WIDTH = 960;
-const TELOP_MAX_FONT_SIZE = 76;
+const TELOP_FONT_SIZE = 76;
 
-// Shrink long telops so they stay on one line instead of wrapping mid-word.
-const telopFontSize = (text: string) =>
-  Math.min(TELOP_MAX_FONT_SIZE, Math.floor(TELOP_MAX_WIDTH / [...text].length));
+// Telops are shown without punctuation; a mid-line mark becomes a space so the
+// phrases stay apart. The narration still reads the original text.
+export const telopDisplayText = (text: string) =>
+  text
+    .replace(/[、。，．,.！？!?]+/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 
+// Every telop uses the same size. A line that does not fit wraps between
+// phrases (auto-phrase), balanced across lines.
 const TelopText = ({ text }: { text: string }) => (
   <AbsoluteFill
     style={{
@@ -64,19 +70,22 @@ const TelopText = ({ text }: { text: string }) => (
     }}
   >
     <div
+      lang="ja"
       style={{
+        maxWidth: TELOP_MAX_WIDTH,
         textAlign: "center",
-        whiteSpace: "nowrap",
+        wordBreak: "auto-phrase" as React.CSSProperties["wordBreak"],
+        textWrap: "balance",
         fontFamily: "'IPAGothic', 'IPAPGothic', sans-serif",
         fontWeight: 700,
-        fontSize: telopFontSize(text),
+        fontSize: TELOP_FONT_SIZE,
         lineHeight: 1.3,
         color: "white",
         WebkitTextStroke: "14px black",
         paintOrder: "stroke fill",
       }}
     >
-      {text}
+      {telopDisplayText(text)}
     </div>
   </AbsoluteFill>
 );

@@ -6,7 +6,8 @@
 // data/<id>/narration.json, then prints how render will fit each telop's clips
 // to its narration. Needs GEMINI_API_KEY. Run it again after changing a telop.
 // Silence before and after the speech is trimmed: TTS sometimes returns many
-// seconds of trailing silence, which would otherwise stretch the video.
+// seconds of trailing silence, which would otherwise stretch the video. The
+// speech is then sped up to DEFAULT_NARRATION.speed.
 import fs from "node:fs";
 import path from "node:path";
 import { fitNarration } from "./lib/narration.mjs";
@@ -27,7 +28,7 @@ const timeline = readJson(paths.timeline);
 const outDir = path.join(paths.work, "narration");
 fs.mkdirSync(outDir, { recursive: true });
 
-const { voice, model } = DEFAULT_NARRATION;
+const { voice, model, speed } = DEFAULT_NARRATION;
 
 const synthesize = async (text) => {
   const res = await fetch(
@@ -53,17 +54,34 @@ const synthesize = async (text) => {
   return Buffer.from(audio.data, "base64");
 };
 
-// Trim silence at both ends (reverse, trim the start, reverse back).
+// TTS occasionally answers without audio; try a few times before giving up.
+const synthesizeWithRetry = async (text, attempts = 3) => {
+  for (let i = 1; ; i++) {
+    try {
+      return await synthesize(text);
+    } catch (error) {
+      if (i >= attempts) throw error;
+      console.warn(`retrying "${text}" (${error.message})`);
+    }
+  }
+};
+
+// Trim silence at both ends (reverse, trim the start, reverse back), then
+// speed up to DEFAULT_NARRATION.speed without changing the pitch.
 const TRIM = "silenceremove=start_periods=1:start_threshold=-45dB:start_silence=0.05";
-const trimSilence = (raw, file) =>
-  run("ffmpeg", ["-v", "error", "-y", "-i", raw, "-af", `${TRIM},areverse,${TRIM},areverse`, "-c:a", "pcm_s16le", file]);
+const finish = (raw, file) =>
+  run("ffmpeg", [
+    "-v", "error", "-y", "-i", raw,
+    "-af", `${TRIM},areverse,${TRIM},areverse,atempo=${speed}`,
+    "-c:a", "pcm_s16le", file,
+  ]);
 
 const telops = [];
 for (const { id: telopId, text } of timeline.telops) {
   const file = path.join(outDir, `${telopId}.wav`);
   const raw = path.join(outDir, `${telopId}.raw.wav`);
-  fs.writeFileSync(raw, await synthesize(text));
-  trimSilence(raw, file);
+  fs.writeFileSync(raw, await synthesizeWithRetry(text));
+  finish(raw, file);
   fs.rmSync(raw);
   const duration = Number(
     run("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", file]),
@@ -72,7 +90,7 @@ for (const { id: telopId, text } of timeline.telops) {
   console.log(`${telopId}  ${round(duration)}s  ${text}`);
 }
 
-const narration = { id, voice, model, telops };
+const narration = { id, voice, model, speed, telops };
 writeJson(paths.narration, narration);
 console.log(`wrote ${paths.narration}`);
 

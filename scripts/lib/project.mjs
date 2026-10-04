@@ -24,6 +24,8 @@ export const DEFAULT_MAX_CLIP_SECONDS = 4;
 export const DEFAULT_NARRATION = {
   voice: "voice_7vk8m4sbxbks",
   model: "gemini-3.8-flash-tts",
+  // Playback speed applied after TTS (pitch kept); 1 = as generated.
+  speed: 1.2,
   leadSeconds: 0.2,
   tailSeconds: 0.4,
   duckVolume: 0.25,

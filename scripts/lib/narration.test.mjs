@@ -80,3 +80,7 @@ test("rejects narration for an edited telop", () => {
 test("rejects a telop without narration", () => {
   assert.throws(() => fitNarration(timeline, { telops: narration.telops.slice(1) }, settings), /T1/);
 });
+
+test("rejects narration made at a different speed", () => {
+  assert.throws(() => fitNarration(timeline, { ...narration, speed: 1 }, { ...settings, speed: 1.2 }), /speed/);
+});

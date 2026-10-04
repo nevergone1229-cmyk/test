@@ -4,91 +4,260 @@
       "id": "T1",
       "text": "揚げ物やめられない人注目",
       "candidates": [
-        { "segment": "A", "score": 90, "reason": "揚げ物がたくさん並ぶ俯瞰で、冒頭のつかみになる" },
-        { "segment": "D", "score": 85, "reason": "きつね色の揚げ物が大きく映るが、後半のカラッとに残したい" },
-        { "segment": "B", "score": 50, "reason": "器具の動きはあるが揚げ物は少ししか見えない" }
+        {
+          "segment": "A",
+          "score": 90,
+          "reason": "揚げ物がたくさん並ぶ俯瞰で、冒頭のつかみになる"
+        },
+        {
+          "segment": "D",
+          "score": 85,
+          "reason": "きつね色の揚げ物が大きく映るが、後半のカラッとに残したい"
+        },
+        {
+          "segment": "B",
+          "score": 50,
+          "reason": "器具の動きはあるが揚げ物は少ししか見えない"
+        }
       ],
-      "pick": [{ "segment": "A", "start": 0, "end": 2.5 }]
+      "pick": [
+        {
+          "segment": "A",
+          "start": 0,
+          "end": 2.5
+        }
+      ]
     },
     {
       "id": "T2",
       "text": "バズってるノンフライヤー検証います",
       "candidates": [
-        { "segment": "B", "score": 92, "reason": "バスケットを本体に押し込み、ノンフライヤーを使い始める場面(test01と同じ判断)" },
-        { "segment": "G", "score": 70, "reason": "温度を設定する操作で使い始めが伝わる" },
-        { "segment": "C", "score": 55, "reason": "本体の正面は映るが動きが少ない" }
+        {
+          "segment": "B",
+          "score": 92,
+          "reason": "バスケットを本体に押し込み、ノンフライヤーを使い始める場面(test01と同じ判断)"
+        },
+        {
+          "segment": "G",
+          "score": 70,
+          "reason": "温度を設定する操作で使い始めが伝わる"
+        },
+        {
+          "segment": "C",
+          "score": 55,
+          "reason": "本体の正面は映るが動きが少ない"
+        }
       ],
-      "pick": ["B"]
+      "pick": [
+        "B"
+      ]
     },
     {
       "id": "T3",
       "text": "余分な油が落ちるからヘルシー",
       "candidates": [
-        { "segment": "E", "score": 95, "reason": "穴あきプレートに油の滴が残り、油が落ちたことが見える" },
-        { "segment": "D", "score": 60, "reason": "揚げ物は映るが油が落ちる様子は見えない" },
-        { "segment": "A", "score": 55, "reason": "穴あきプレートは見えるが油の滴はわからない" }
+        {
+          "segment": "E",
+          "score": 95,
+          "reason": "穴あきプレートに油の滴が残り、油が落ちたことが見える"
+        },
+        {
+          "segment": "P",
+          "score": 93,
+          "reason": "落ちた油と「95%油分カット」で、ヘルシーさを数字で補える"
+        },
+        {
+          "segment": "A",
+          "score": 55,
+          "reason": "穴あきプレートは見えるが油の滴はわからない"
+        }
       ],
-      "pick": [{ "segment": "E", "start": 0, "end": 3 }]
+      "pick": [
+        {
+          "segment": "E",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "segment": "P",
+          "end": 2.5
+        }
+      ]
     },
     {
       "id": "T4",
       "text": "これが一番嬉しい",
       "candidates": [
-        { "segment": "A", "score": 75, "reason": "断面の見える揚げ物で、油を気にせず食べられる嬉しさにつながる(前半はT1で使用)" },
-        { "segment": "E", "score": 70, "reason": "直前の油の話の続きとして見られる(T3・T7で使用)" },
-        { "segment": "D", "score": 65, "reason": "揚げ物は映るがT5で使う" }
+        {
+          "segment": "A",
+          "score": 75,
+          "reason": "断面の見える揚げ物で、油を気にせず食べられる嬉しさにつながる(前半はT1で使用)"
+        },
+        {
+          "segment": "E",
+          "score": 70,
+          "reason": "直前の油の話の続きとして見られる(T3・T7で使用)"
+        },
+        {
+          "segment": "D",
+          "score": 65,
+          "reason": "揚げ物は映るがT5で使う"
+        }
       ],
-      "pick": [{ "segment": "A", "start": 2.5, "end": 5 }]
+      "pick": [
+        {
+          "segment": "A",
+          "start": 2.5,
+          "end": 5
+        }
+      ]
     },
     {
       "id": "T5",
       "text": "熱風で調理するからカラッとになる",
       "candidates": [
-        { "segment": "D", "score": 93, "reason": "衣の色と質感が大きく映り、カラッと仕上がった様子が伝わる" },
-        { "segment": "A", "score": 75, "reason": "揚げ物の衣は見えるが俯瞰で質感が伝わりにくい" },
-        { "segment": "H", "score": 50, "reason": "ファンのマークと200℃の表示で熱風は連想できるが、仕上がりは見えない" }
+        {
+          "segment": "D",
+          "score": 93,
+          "reason": "衣の色と質感が大きく映り、カラッと仕上がった様子が伝わる"
+        },
+        {
+          "segment": "A",
+          "score": 75,
+          "reason": "揚げ物の衣は見えるが俯瞰で質感が伝わりにくい"
+        },
+        {
+          "segment": "H",
+          "score": 50,
+          "reason": "ファンのマークと200℃の表示で熱風は連想できるが、仕上がりは見えない"
+        }
       ],
-      "pick": ["D"]
+      "pick": [
+        "D"
+      ]
     },
     {
       "id": "T6",
       "text": "ピッてしてほったらかしでいいし",
       "candidates": [
-        { "segment": "G", "score": 92, "reason": "指でボタンを押す「ピッ」の動き" },
-        { "segment": "H", "score": 88, "reason": "手を離した操作パネルで「ほったらかし」が伝わる" },
-        { "segment": "F", "score": 80, "reason": "ボタン操作だが時間設定の場面" }
+        {
+          "segment": "G",
+          "score": 92,
+          "reason": "指でボタンを押す「ピッ」の動き"
+        },
+        {
+          "segment": "H",
+          "score": 88,
+          "reason": "手を離した操作パネルで「ほったらかし」が伝わる"
+        },
+        {
+          "segment": "F",
+          "score": 80,
+          "reason": "ボタン操作だが時間設定の場面"
+        }
       ],
-      "pick": [{ "segment": "G", "start": 3, "end": 5.5 }, { "segment": "H", "start": 8, "end": 10 }]
+      "pick": [
+        {
+          "segment": "G",
+          "start": 3,
+          "end": 5.5
+        },
+        {
+          "segment": "H",
+          "start": 8,
+          "end": 10
+        }
+      ]
     },
     {
       "id": "T7",
       "text": "後片付けがめっちゃ楽",
       "candidates": [
-        { "segment": "E", "score": 88, "reason": "空のバスケットにかけらと油が少し残るだけで、片付けの楽さにつながる(前半はT3で使用)" },
-        { "segment": "C", "score": 45, "reason": "閉じた本体で片付けの様子は見えない" },
-        { "segment": "A", "score": 35, "reason": "食材が載っていて片付けとは合わない" }
+        {
+          "segment": "E",
+          "score": 88,
+          "reason": "空のバスケットにかけらと油が少し残るだけで、片付けの楽さにつながる(前半はT3で使用)"
+        },
+        {
+          "segment": "C",
+          "score": 45,
+          "reason": "閉じた本体で片付けの様子は見えない"
+        },
+        {
+          "segment": "A",
+          "score": 35,
+          "reason": "食材が載っていて片付けとは合わない"
+        }
       ],
-      "pick": [{ "segment": "E", "start": 3, "end": 6.37 }]
+      "pick": [
+        {
+          "segment": "E",
+          "start": 3,
+          "end": 6.37
+        }
+      ]
     },
     {
       "id": "T8",
       "text": "健康志向の人、ずぼらな人、時短したい人におすすめ",
       "candidates": [
-        { "segment": "H", "score": 72, "reason": "200℃・5分の表示が交互に出て、手間の少なさと時短が伝わる(前半はT6で使用)" },
-        { "segment": "F", "score": 60, "reason": "5分の設定で時短は伝わるが手が映る" },
-        { "segment": "C", "score": 55, "reason": "本体の正面でおすすめの締めに使えるがT9で使う" }
+        {
+          "segment": "H",
+          "score": 72,
+          "reason": "200℃・5分の表示で手間の少なさと時短が伝わる"
+        },
+        {
+          "segment": "Q",
+          "score": 70,
+          "reason": "野菜や鶏肉とレシピブックで、健康志向の人に向く印象"
+        },
+        {
+          "segment": "F",
+          "score": 60,
+          "reason": "5分の設定で時短は伝わるが手が映る"
+        }
       ],
-      "pick": [{ "segment": "H", "start": 11, "end": 14.5 }]
+      "pick": [
+        {
+          "segment": "H",
+          "start": 11,
+          "end": 13.5
+        },
+        {
+          "segment": "Q"
+        }
+      ]
     },
     {
       "id": "T9",
       "text": "気になった人は、チェックしてみてね",
       "candidates": [
-        { "segment": "C", "score": 80, "reason": "閉じた本体の正面と取っ手で、商品をチェックしてもらう締めに合う" },
-        { "segment": "H", "score": 60, "reason": "操作パネルの表示で商品は伝わる" },
-        { "segment": "D", "score": 55, "reason": "仕上がりは魅力的だがT5で使用" }
+        {
+          "segment": "R",
+          "score": 92,
+          "reason": "商品全体と「秋セール」「数量限定」で、チェックを促す締めに合う"
+        },
+        {
+          "segment": "C",
+          "score": 80,
+          "reason": "閉じた本体の正面と取っ手"
+        },
+        {
+          "segment": "H",
+          "score": 60,
+          "reason": "操作パネルの表示で商品は伝わる"
+        }
       ],
-      "pick": ["C"]
+      "pick": [
+        {
+          "segment": "C",
+          "start": 9,
+          "end": 10.37
+        },
+        {
+          "segment": "R"
+        }
+      ]
     }
   ]
 }

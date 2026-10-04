@@ -1,0 +1,61 @@
+{
+  "id": "test02",
+  "voice": "voice_7vk8m4sbxbks",
+  "model": "gemini-3.8-flash-tts",
+  "telops": [
+    {
+      "id": "T1",
+      "text": "揚げ物やめられない人注目",
+      "file": "work/test02/narration/T1.wav",
+      "duration": 2.57
+    },
+    {
+      "id": "T2",
+      "text": "バズってるノンフライヤー検証います",
+      "file": "work/test02/narration/T2.wav",
+      "duration": 3.71
+    },
+    {
+      "id": "T3",
+      "text": "余分な油が落ちるからヘルシー",
+      "file": "work/test02/narration/T3.wav",
+      "duration": 2.07
+    },
+    {
+      "id": "T4",
+      "text": "これが一番嬉しい",
+      "file": "work/test02/narration/T4.wav",
+      "duration": 1.91
+    },
+    {
+      "id": "T5",
+      "text": "熱風で調理するからカラッとになる",
+      "file": "work/test02/narration/T5.wav",
+      "duration": 2.76
+    },
+    {
+      "id": "T6",
+      "text": "ピッてしてほったらかしでいいし",
+      "file": "work/test02/narration/T6.wav",
+      "duration": 2.14
+    },
+    {
+      "id": "T7",
+      "text": "後片付けがめっちゃ楽",
+      "file": "work/test02/narration/T7.wav",
+      "duration": 1.94
+    },
+    {
+      "id": "T8",
+      "text": "健康志向の人、ずぼらな人、時短したい人におすすめ",
+      "file": "work/test02/narration/T8.wav",
+      "duration": 4.73
+    },
+    {
+      "id": "T9",
+      "text": "気になった人は、チェックしてみてね",
+      "file": "work/test02/narration/T9.wav",
+      "duration": 2.13
+    }
+  ]
+}

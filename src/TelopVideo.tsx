@@ -37,9 +37,8 @@ const telopFontSize = (text: string) =>
 const TelopText = ({ text }: { text: string }) => (
   <AbsoluteFill
     style={{
-      justifyContent: "flex-end",
+      justifyContent: "center",
       alignItems: "center",
-      paddingBottom: 360,
     }}
   >
     <div
@@ -67,7 +66,7 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     [];
 
   let cursor = 0;
-  for (const telop of timeline.telops) {
+  for (const [index, telop] of timeline.telops.entries()) {
     const telopFrom = cursor;
     for (const clip of telop.clips) {
       const duration = clipFrames(clip, fps);
@@ -75,7 +74,7 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
       cursor += duration;
     }
     telops.push({
-      key: telop.id,
+      key: `${index}-${telop.id}`,
       text: telop.text,
       from: telopFrom,
       duration: cursor - telopFrom,

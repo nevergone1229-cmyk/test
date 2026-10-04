@@ -1,3 +1,6 @@
 node_modules/
 out/
 .remotion/
+work/
+# Prepared clips are generated from the uploaded materials by scripts/prepare.mjs.
+public/*/

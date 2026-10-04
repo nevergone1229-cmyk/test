@@ -1,0 +1,104 @@
+{
+  "id": "test01",
+  "assets": {
+    "IMG_5513": {
+      "file": "IMG_5513.mov",
+      "type": "video",
+      "sheet": "../../work/test01/sheets/IMG_5513.jpg",
+      "segments": [
+        {
+          "id": "A",
+          "start": 0,
+          "end": 5,
+          "description": "上から見たバスケット内の揚げ物（カツ・スティック状）。一部に白い断面",
+          "tags": [
+            "バスケット",
+            "揚げ物",
+            "きつね色",
+            "俯瞰"
+          ]
+        },
+        {
+          "id": "B",
+          "start": 5,
+          "end": 9,
+          "description": "手で取っ手を持ってバスケットを本体に押し込む",
+          "tags": [
+            "押し込む",
+            "閉める",
+            "手",
+            "取っ手",
+            "ノンフライヤー"
+          ]
+        },
+        {
+          "id": "C",
+          "start": 9,
+          "end": 10.37,
+          "description": "閉じた引き出しの正面と取っ手のアップ。食品は見えない",
+          "tags": [
+            "閉じた状態",
+            "取っ手",
+            "正面"
+          ]
+        }
+      ],
+      "duration": 10.37,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5516": {
+      "file": "IMG_5516.mov",
+      "type": "video",
+      "sheet": "../../work/test01/sheets/IMG_5516.jpg",
+      "segments": [
+        {
+          "id": "D",
+          "start": 0,
+          "end": 3.8,
+          "description": "斜め上から見た、開いたバスケット内の揚げ物6個",
+          "tags": [
+            "バスケット",
+            "揚げ物",
+            "きつね色",
+            "斜め上"
+          ]
+        }
+      ],
+      "duration": 3.8,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5517": {
+      "file": "IMG_5517.mov",
+      "type": "video",
+      "sheet": "../../work/test01/sheets/IMG_5517.jpg",
+      "segments": [
+        {
+          "id": "E",
+          "start": 0,
+          "end": 6.37,
+          "description": "空のバスケット。穴あきプレートに食品のかけらと油の滴が残っている",
+          "tags": [
+            "空",
+            "油の滴",
+            "かけら",
+            "お手入れ"
+          ]
+        }
+      ],
+      "duration": 6.37,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    }
+  }
+}

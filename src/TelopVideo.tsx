@@ -19,6 +19,10 @@ export type Timeline = {
   telops: Telop[];
 };
 
+// Must match clipFileName() in scripts/prepare.mjs, which writes these files.
+const clipFileName = (index: number) =>
+  `clip-${String(index + 1).padStart(2, "0")}.mp4`;
+
 const clipFrames = (clip: Clip, fps: number) =>
   Math.round((clip.end - clip.start) * fps);
 
@@ -70,7 +74,7 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     const telopFrom = cursor;
     for (const clip of telop.clips) {
       const duration = clipFrames(clip, fps);
-      clips.push({ key: clip.segment, from: cursor, duration });
+      clips.push({ key: clipFileName(clips.length), from: cursor, duration });
       cursor += duration;
     }
     telops.push({
@@ -85,7 +89,7 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     <AbsoluteFill style={{ backgroundColor: "black" }}>
       {clips.map((c) => (
         <Sequence key={c.key} from={c.from} durationInFrames={c.duration}>
-          <OffthreadVideo src={staticFile(`${timeline.id}/${c.key}.mp4`)} />
+          <OffthreadVideo src={staticFile(`${timeline.id}/${c.key}`)} />
         </Sequence>
       ))}
       {telops.map((t) => (

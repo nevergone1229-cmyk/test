@@ -1,0 +1,34 @@
+{
+  "telops": [
+    {
+      "id": "T3",
+      "text": "ノンフライヤー検証します",
+      "candidates": [
+        { "segment": "B", "score": 90, "reason": "バスケットを本体に押し込む動きで、ノンフライヤーを使う場面が伝わる" },
+        { "segment": "A", "score": 70, "reason": "調理前の揚げ物とバスケットが映り、検証の対象がわかる" },
+        { "segment": "C", "score": 55, "reason": "閉じた本体の正面。器具は映るが動きが少ない" }
+      ],
+      "pick": ["B"]
+    },
+    {
+      "id": "T2",
+      "text": "油もの我慢しなくて大丈夫",
+      "candidates": [
+        { "segment": "D", "score": 94, "reason": "衣の色と厚みが伝わり、揚げ物を楽しめるメッセージに合う" },
+        { "segment": "A", "score": 87, "reason": "揚げ物が多く並び、我慢しないイメージにつながる" },
+        { "segment": "B", "score": 75, "reason": "手軽さは伝わるが、後半は食材が隠れる" }
+      ],
+      "pick": ["D"]
+    },
+    {
+      "id": "T1",
+      "text": "ノンフライヤーで余分な油カット",
+      "candidates": [
+        { "segment": "E", "score": 88, "reason": "バスケットに落ちた油の滴が、カットされた余分な油を示す" },
+        { "segment": "B", "score": 80, "reason": "ノンフライヤーを使う場面が伝わる" },
+        { "segment": "A", "score": 70, "reason": "穴あきプレートの上の揚げ物。油が落ちる様子は見えない" }
+      ],
+      "pick": [{ "segment": "E", "start": 0, "end": 3 }]
+    }
+  ]
+}

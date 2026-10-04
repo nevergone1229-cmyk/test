@@ -95,6 +95,18 @@ npm run render -- <id> <素材ディレクトリ>
   `out/<id>.mp4` を SendUserFile(display: render)で渡す。
 - Remotion が出す「Memory reported by CGroup…」の警告は無害。
 
+## ナレーションを作る(ユーザーが頼んだときだけ)
+
+```bash
+npm run narrate -- <id>   # GEMINI_API_KEY が必要
+```
+
+- `data/<id>/script.txt` の1行ごとに、標準ナレーション音声(下の「固定の設定」)で読み上げる。
+- 出力: `work/<id>/narration/N01.wav`… と、行・秒数・使った声の一覧 `data/<id>/narration.json`。
+  実行のたびに全行を作り直す。
+- 別の声を使うのはユーザーが指定したときだけ。APIキーは出力しない。
+- 動画への合成はまだ自動化していない(レンダリングの音声は下の「固定の設定」のまま)。
+
 ## 6. 保存する
 
 - `data/<id>/`(script.txt, assets.json, candidates.json, candidates.md, timeline.json,
@@ -110,6 +122,7 @@ test01 で承認された設定。変更するときは下の「回帰チェッ�
 | 画面 | 1080×1920、30fps | `scripts/lib/project.mjs` の `DEFAULT_VIDEO` |
 | テロップ | 画面中央、白文字＋黒縁(14px)、IPAゴシック太字76px。長い行は1行に収まるよう縮小 | `src/TelopVideo.tsx` |
 | 音声 | 元動画の音声を残す。BGMなし。音声の無いクリップには無音トラック | `scripts/prepare.mjs` |
+| ナレーション音声 | `voice_7vk8m4sbxbks`(ユーザー本人の複製音声、ja-JP)、`gemini-3.8-flash-tts` | `scripts/lib/project.mjs` の `DEFAULT_NARRATION` |
 | 色 | HDR(HLG/PQ)素材は SDR BT.709 にトーンマッピング | `scripts/lib/project.mjs` の `TONEMAP` |
 | 画像 | 3秒表示、画面いっぱいに切り抜き、EXIFの回転を反映 | `DEFAULT_IMAGE_SECONDS`, `prepare.mjs` |
 | 動画クリップの初期長さ | 最大4秒 | `DEFAULT_MAX_CLIP_SECONDS` |

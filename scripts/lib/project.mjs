@@ -17,6 +17,13 @@ export const DEFAULT_VIDEO = { width: 1080, height: 1920, fps: 30 };
 export const DEFAULT_IMAGE_SECONDS = 3;
 export const DEFAULT_MAX_CLIP_SECONDS = 4;
 
+// Standard narration voice: the user's replicated voice registered with the
+// Gemini Voices API (store: true, ja-JP). Narration from scripts uses this.
+export const DEFAULT_NARRATION = {
+  voice: "voice_7vk8m4sbxbks",
+  model: "gemini-3.8-flash-tts",
+};
+
 // iPhone HDR (HLG / BT.2020) footage, tone-mapped to SDR BT.709. These are the
 // settings test01 was approved with.
 export const TONEMAP =
@@ -33,6 +40,7 @@ export const projectPaths = (id) => {
     candidates: path.join(ROOT, "data", id, "candidates.json"),
     candidatesMd: path.join(ROOT, "data", id, "candidates.md"),
     timeline: path.join(ROOT, "data", id, "timeline.json"),
+    narration: path.join(ROOT, "data", id, "narration.json"),
     work: path.join(ROOT, "work", id),
     public: path.join(ROOT, "public", id),
     out: path.join(ROOT, "out", `${id}.mp4`),

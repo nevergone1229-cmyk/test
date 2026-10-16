@@ -21,6 +21,8 @@ export const validateTimeline = (timeline, { requireConfirmed = false } = {}) =>
   for (const [i, telop] of (telops ?? []).entries()) {
     const where = `telops[${i}] (${telop.id})`;
     if (!telop.text?.trim()) errors.push(`${where}: empty text`);
+    if (telop.text?.split("\n").length > 2) errors.push(`${where}: more than 2 lines`);
+    if (telop.sfx && telop.sfx !== "sparkle") errors.push(`${where}: unknown sfx ${telop.sfx}`);
     if (!telop.clips?.length) errors.push(`${where}: no clips`);
     for (const clip of telop.clips ?? []) {
       const asset = assets?.[clip.asset];

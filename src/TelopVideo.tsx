@@ -1,4 +1,4 @@
-import { AbsoluteFill, OffthreadVideo, Sequence, staticFile } from "remotion";
+import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile } from "remotion";
 
 export type Clip = {
   segment: string;
@@ -9,13 +9,26 @@ export type Clip = {
 
 export type Telop = {
   id: string;
+  // "\n" starts a new line.
   text: string;
   clips: Clip[];
+  // Sound effect played when the telop appears; must match SFX in scripts/prepare.mjs.
+  sfx?: "sparkle";
+};
+
+// Optional per-project look. Anything left out keeps the test01 look.
+export type TelopStyle = {
+  color?: string;
+  strokeColor?: string;
+  strokeWidth?: number;
+  glowColor?: string;
+  fontSize?: number;
 };
 
 export type Timeline = {
   id: string;
   video: { width: number; height: number; fps: number };
+  style?: TelopStyle;
   telops: Telop[];
 };
 
@@ -34,11 +47,16 @@ export const timelineDuration = (timeline: Timeline) =>
 const TELOP_MAX_WIDTH = 960;
 const TELOP_MAX_FONT_SIZE = 76;
 
-// Shrink long telops so they stay on one line instead of wrapping mid-word.
-const telopFontSize = (text: string) =>
-  Math.min(TELOP_MAX_FONT_SIZE, Math.floor(TELOP_MAX_WIDTH / [...text].length));
+// Shrink long lines so each stays on one line instead of wrapping mid-word.
+const telopFontSize = (text: string, maxFontSize: number) =>
+  Math.min(
+    maxFontSize,
+    Math.floor(
+      TELOP_MAX_WIDTH / Math.max(...text.split("\n").map((line) => [...line].length)),
+    ),
+  );
 
-const TelopText = ({ text }: { text: string }) => (
+const TelopText = ({ text, style = {} }: { text: string; style?: TelopStyle }) => (
   <AbsoluteFill
     style={{
       justifyContent: "center",
@@ -48,14 +66,17 @@ const TelopText = ({ text }: { text: string }) => (
     <div
       style={{
         textAlign: "center",
-        whiteSpace: "nowrap",
+        whiteSpace: "pre",
         fontFamily: "'IPAGothic', 'IPAPGothic', sans-serif",
         fontWeight: 700,
-        fontSize: telopFontSize(text),
+        fontSize: telopFontSize(text, style.fontSize ?? TELOP_MAX_FONT_SIZE),
         lineHeight: 1.3,
-        color: "white",
-        WebkitTextStroke: "14px black",
+        color: style.color ?? "white",
+        WebkitTextStroke: `${style.strokeWidth ?? 14}px ${style.strokeColor ?? "black"}`,
         paintOrder: "stroke fill",
+        ...(style.glowColor
+          ? { filter: `drop-shadow(0 0 18px ${style.glowColor})` }
+          : {}),
       }}
     >
       {text}
@@ -66,8 +87,13 @@ const TelopText = ({ text }: { text: string }) => (
 export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
   const { fps } = timeline.video;
   const clips: { key: string; from: number; duration: number }[] = [];
-  const telops: { key: string; text: string; from: number; duration: number }[] =
-    [];
+  const telops: {
+    key: string;
+    text: string;
+    sfx?: Telop["sfx"];
+    from: number;
+    duration: number;
+  }[] = [];
 
   let cursor = 0;
   for (const [index, telop] of timeline.telops.entries()) {
@@ -80,6 +106,7 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     telops.push({
       key: `${index}-${telop.id}`,
       text: telop.text,
+      sfx: telop.sfx,
       from: telopFrom,
       duration: cursor - telopFrom,
     });
@@ -94,9 +121,16 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
       ))}
       {telops.map((t) => (
         <Sequence key={t.key} from={t.from} durationInFrames={t.duration}>
-          <TelopText text={t.text} />
+          <TelopText text={t.text} style={timeline.style} />
         </Sequence>
       ))}
+      {telops
+        .filter((t) => t.sfx)
+        .map((t) => (
+          <Sequence key={`sfx-${t.key}`} from={t.from}>
+            <Audio src={staticFile(`${timeline.id}/sfx-${t.sfx}.wav`)} />
+          </Sequence>
+        ))}
     </AbsoluteFill>
   );
 };

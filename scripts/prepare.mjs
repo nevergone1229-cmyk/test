@@ -18,6 +18,16 @@ import {
 
 export const clipFileName = (index) => `clip-${String(index + 1).padStart(2, "0")}.mp4`;
 
+// Sound effects a telop can request with "sfx", synthesized so no download is needed.
+// sparkle: a quick rising run of soft high chimes, each fading out.
+const chime = (freq, delay) =>
+  `0.11*sin(2*PI*${freq}*t)*exp(-9*(t-${delay}))*gte(t,${delay})`;
+const SFX = {
+  sparkle: [[2637, 0], [3136, 0.06], [3951, 0.12], [4699, 0.18], [5274, 0.24]]
+    .map(([f, d]) => chime(f, d))
+    .join("+"),
+};
+
 export const prepare = (id, materialsDir) => {
   const paths = projectPaths(id);
   const timeline = readJson(paths.timeline);
@@ -34,6 +44,15 @@ export const prepare = (id, materialsDir) => {
   fs.mkdirSync(paths.public, { recursive: true });
   const imagesDir = path.join(paths.work, "images");
   fs.mkdirSync(imagesDir, { recursive: true });
+
+  for (const name of new Set(timeline.telops.map((t) => t.sfx).filter(Boolean))) {
+    if (!SFX[name]) throw new Error(`unknown sfx: ${name}`);
+    run("ffmpeg", [
+      "-v", "error", "-y", "-f", "lavfi",
+      "-i", `aevalsrc='${SFX[name]}|${SFX[name]}':s=48000:d=1.2`,
+      path.join(paths.public, `sfx-${name}.wav`),
+    ]);
+  }
 
   const clips = timeline.telops.flatMap((t) => t.clips);
   clips.forEach((clip, index) => {

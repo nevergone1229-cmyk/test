@@ -156,11 +156,11 @@
       "text": "こんな感じ、いきまーす",
       "clips": [
         {
-          "segment": "L",
-          "asset": "IMG_5708",
-          "start": 0.3,
-          "end": 2.3,
-          "note": "手袋で髪を押さえてアイロンを入れる"
+          "segment": "D",
+          "asset": "IMG_5707",
+          "start": 5,
+          "end": 7,
+          "note": "手袋の手でアイロンを髪に通す"
         }
       ]
     },
@@ -176,11 +176,11 @@
           "note": "アイロンを髪に滑らせる"
         },
         {
-          "segment": "D",
-          "asset": "IMG_5707",
-          "start": 5,
-          "end": 7,
-          "note": "アイロンを髪に通す"
+          "segment": "L",
+          "asset": "IMG_5708",
+          "start": 0.3,
+          "end": 2.3,
+          "note": "手袋で押さえてアイロンを通す"
         }
       ]
     },
@@ -206,7 +206,7 @@
           "segment": "M",
           "asset": "IMG_5708",
           "start": 3,
-          "end": 6,
+          "end": 5.6,
           "note": "片側だけ仕上げた比較"
         }
       ],
@@ -219,9 +219,9 @@
         {
           "segment": "M",
           "asset": "IMG_5708",
-          "start": 6,
-          "end": 8.78,
-          "note": "ツヤのあるストレート"
+          "start": 5.6,
+          "end": 8.2,
+          "note": "仕上がった髪を触る"
         }
       ]
     },
@@ -230,11 +230,11 @@
       "text": "艶が出た感じ！",
       "clips": [
         {
-          "segment": "E",
-          "asset": "IMG_5707",
-          "start": 7,
-          "end": 8.97,
-          "note": "まっすぐな髪を触る"
+          "segment": "P",
+          "asset": "IMG_5718",
+          "start": 4,
+          "end": 5.85,
+          "note": "ツヤのある髪にアイロンを滑らせる"
         }
       ],
       "sfx": "sparkle"
@@ -296,18 +296,11 @@
       "text": "今ね、在庫がなくなっても\n再入荷しないみたいだから",
       "clips": [
         {
-          "segment": "P",
-          "asset": "IMG_5718",
-          "start": 4,
-          "end": 5.85,
-          "note": "アイロンを髪に滑らせる"
-        },
-        {
           "segment": "B",
           "asset": "IMG_5699",
           "start": 9.4,
-          "end": 10.6,
-          "note": "商品"
+          "end": 13,
+          "note": "商品ロゴ"
         }
       ]
     },
@@ -316,11 +309,11 @@
       "text": "気になった人は\n後悔しないうちに",
       "clips": [
         {
-          "segment": "B",
-          "asset": "IMG_5699",
-          "start": 10.6,
-          "end": 13,
-          "note": "商品ロゴ"
+          "segment": "O",
+          "asset": "IMG_5718",
+          "start": 1,
+          "end": 3.4,
+          "note": "仕上がりのストレート（T11と同じ素材の再使用）"
         }
       ]
     },
@@ -329,11 +322,11 @@
       "text": "下のリンクから\nよかったら見てみて",
       "clips": [
         {
-          "segment": "O",
-          "asset": "IMG_5718",
-          "start": 1.2,
-          "end": 3.4,
-          "note": "仕上がりのストレート（T11と同じ素材の再使用）"
+          "segment": "M",
+          "asset": "IMG_5708",
+          "start": 3,
+          "end": 5.2,
+          "note": "仕上がり（T12と同じ素材の再使用）"
         }
       ]
     }

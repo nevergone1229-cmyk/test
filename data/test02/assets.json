@@ -1,0 +1,182 @@
+{
+  "id": "test02",
+  "assets": {
+    "IMG_5699": {
+      "file": "IMG_5699.mov",
+      "type": "video",
+      "sheet": "../../work/test02/sheets/IMG_5699.jpg",
+      "segments": [
+        {
+          "id": "A",
+          "start": 0,
+          "end": 3,
+          "description": "ピンクのWAVYTALK製品を斜めに持って全体を見せる（下部に茶色い持ち手/パーツ）",
+          "tags": [
+            "商品",
+            "全体",
+            "WAVYTALK",
+            "ピンク"
+          ]
+        },
+        {
+          "id": "B",
+          "start": 3,
+          "end": 13,
+          "description": "同じ製品のロゴ部分と本体の凹凸のアップ",
+          "tags": [
+            "商品",
+            "ロゴ",
+            "アップ",
+            "WAVYTALK"
+          ]
+        }
+      ],
+      "duration": 13,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5707": {
+      "file": "IMG_5707.mov",
+      "type": "video",
+      "sheet": "../../work/test02/sheets/IMG_5707.jpg",
+      "segments": [
+        {
+          "id": "C",
+          "start": 0,
+          "end": 5,
+          "description": "ピンクのブラシ型ヘアアイロン。素手でブラシ面・本体を触って見せる（反対の手は黒い手袋）",
+          "tags": [
+            "ブラシアイロン",
+            "ブラシ面",
+            "触る",
+            "商品"
+          ]
+        },
+        {
+          "id": "D",
+          "start": 5,
+          "end": 7,
+          "description": "黒い手袋の手でブラシアイロンを髪に通す",
+          "tags": [
+            "使用中",
+            "髪",
+            "手袋",
+            "とかす"
+          ]
+        },
+        {
+          "id": "E",
+          "start": 7,
+          "end": 8.97,
+          "description": "とかした後のまっすぐな長い髪を手で触る。コード付きの本体が見える",
+          "tags": [
+            "仕上がり",
+            "ストレート",
+            "髪"
+          ]
+        }
+      ],
+      "duration": 8.97,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5715": {
+      "file": "IMG_5715.mov",
+      "type": "video",
+      "sheet": "../../work/test02/sheets/IMG_5715.jpg",
+      "segments": [
+        {
+          "id": "H",
+          "start": 0,
+          "end": 4,
+          "description": "黒い手袋をカメラ前で見せ、髪に当てる",
+          "tags": [
+            "手袋",
+            "見せる"
+          ]
+        },
+        {
+          "id": "I",
+          "start": 4,
+          "end": 9,
+          "description": "黒い手袋を手にはめる",
+          "tags": [
+            "手袋",
+            "はめる",
+            "準備"
+          ]
+        },
+        {
+          "id": "J",
+          "start": 9,
+          "end": 12,
+          "description": "手袋の手と素手で長い髪を整える・持ち上げる",
+          "tags": [
+            "髪",
+            "整える",
+            "手袋"
+          ]
+        },
+        {
+          "id": "K",
+          "start": 12,
+          "end": 14.83,
+          "description": "手袋の手で髪の束を持って下に引く（まっすぐな髪）",
+          "tags": [
+            "髪",
+            "手袋",
+            "ストレート",
+            "持つ"
+          ]
+        }
+      ],
+      "duration": 14.83,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5711": {
+      "file": "IMG_5711.mov",
+      "type": "video",
+      "sheet": "../../work/test02/sheets/IMG_5711.jpg",
+      "segments": [
+        {
+          "id": "F",
+          "start": 0,
+          "end": 2.7,
+          "description": "三つ編みの髪の横からのアップ（毛先にヘアゴム）",
+          "tags": [
+            "三つ編み",
+            "ビフォー",
+            "アップ"
+          ]
+        },
+        {
+          "id": "G",
+          "start": 2.7,
+          "end": 8.1,
+          "description": "正面から三つ編み。毛先のヘアゴムを手でほどき始める",
+          "tags": [
+            "三つ編み",
+            "ほどく",
+            "ヘアゴム"
+          ]
+        }
+      ],
+      "duration": 8.1,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    }
+  }
+}

@@ -29,6 +29,8 @@ export type Timeline = {
   id: string;
   video: { width: number; height: number; fps: number };
   style?: TelopStyle;
+  // true drops the footage's own sound (sound effects still play).
+  muteSource?: boolean;
   telops: Telop[];
 };
 
@@ -116,7 +118,10 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     <AbsoluteFill style={{ backgroundColor: "black" }}>
       {clips.map((c) => (
         <Sequence key={c.key} from={c.from} durationInFrames={c.duration}>
-          <OffthreadVideo src={staticFile(`${timeline.id}/${c.key}`)} />
+          <OffthreadVideo
+            src={staticFile(`${timeline.id}/${c.key}`)}
+            muted={timeline.muteSource}
+          />
         </Sequence>
       ))}
       {telops.map((t) => (

@@ -14,6 +14,7 @@
     "glowColor": "rgba(255,105,180,0.85)",
     "fontSize": 84
   },
+  "muteSource": true,
   "assets": {
     "IMG_5718": {
       "file": "IMG_5718.mov",

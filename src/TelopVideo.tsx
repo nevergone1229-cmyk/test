@@ -1,10 +1,26 @@
-import { AbsoluteFill, Audio, OffthreadVideo, Sequence, staticFile } from "remotion";
+import {
+  AbsoluteFill,
+  Audio,
+  interpolate,
+  OffthreadVideo,
+  Sequence,
+  staticFile,
+} from "remotion";
 
 export type Clip = {
   segment: string;
   asset: string;
   start: number;
   end: number;
+  // Seconds to freeze the last frame (added when fitting narration).
+  hold?: number;
+};
+
+// Added by scripts/lib/narration.mjs at render time.
+export type Narration = {
+  file: string;
+  offset: number;
+  duration: number;
 };
 
 export type Telop = {
@@ -14,6 +30,7 @@ export type Telop = {
   clips: Clip[];
   // Sound effect played when the telop appears; must match SFX in scripts/prepare.mjs.
   sfx?: "sparkle";
+  narration?: Narration;
 };
 
 // Optional per-project look. Anything left out keeps the test01 look.
@@ -32,6 +49,8 @@ export type Timeline = {
   // true drops the footage's own sound (sound effects still play).
   muteSource?: boolean;
   telops: Telop[];
+  // sfxVolume keeps sound effects under the narration (1 = as synthesized).
+  audio?: { duckVolume: number; rampSeconds: number; sfxVolume?: number };
 };
 
 // Must match clipFileName() in scripts/prepare.mjs, which writes these files.
@@ -39,7 +58,7 @@ const clipFileName = (index: number) =>
   `clip-${String(index + 1).padStart(2, "0")}.mp4`;
 
 const clipFrames = (clip: Clip, fps: number) =>
-  Math.round((clip.end - clip.start) * fps);
+  Math.round((clip.end - clip.start + (clip.hold ?? 0)) * fps);
 
 export const timelineDuration = (timeline: Timeline) =>
   timeline.telops
@@ -66,7 +85,9 @@ const TelopText = ({ text, style = {} }: { text: string; style?: TelopStyle }) =
     }}
   >
     <div
+      lang="ja"
       style={{
+        maxWidth: TELOP_MAX_WIDTH,
         textAlign: "center",
         whiteSpace: "pre",
         fontFamily: "'IPAGothic', 'IPAPGothic', sans-serif",
@@ -86,6 +107,26 @@ const TelopText = ({ text, style = {} }: { text: string; style?: TelopStyle }) =
   </AbsoluteFill>
 );
 
+// Volume of the clips' own sound at a frame: lowered to duckVolume while any
+// narration plays (fading in and out over rampFrames), otherwise full.
+const clipVolumeAt = (
+  frame: number,
+  windows: { from: number; to: number }[],
+  duckVolume: number,
+  rampFrames: number,
+) =>
+  Math.min(
+    1,
+    ...windows.map((w) =>
+      interpolate(
+        frame,
+        [w.from - rampFrames, w.from, w.to, w.to + rampFrames],
+        [1, duckVolume, duckVolume, 1],
+        { extrapolateLeft: "clamp", extrapolateRight: "clamp" },
+      ),
+    ),
+  );
+
 export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
   const { fps } = timeline.video;
   const clips: { key: string; from: number; duration: number }[] = [];
@@ -96,6 +137,8 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
     from: number;
     duration: number;
   }[] = [];
+  const narrations: { key: string; file: string; from: number; duration: number }[] =
+    [];
 
   let cursor = 0;
   for (const [index, telop] of timeline.telops.entries()) {
@@ -112,7 +155,24 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
       from: telopFrom,
       duration: cursor - telopFrom,
     });
+    if (telop.narration) {
+      const from = telopFrom + Math.round(telop.narration.offset * fps);
+      narrations.push({
+        key: `${index}-${telop.id}-narration`,
+        file: telop.narration.file,
+        from,
+        duration: Math.min(Math.ceil(telop.narration.duration * fps), cursor - from),
+      });
+    }
   }
+
+  const duck = timeline.audio;
+  const windows = narrations.map((n) => ({ from: n.from, to: n.from + n.duration }));
+  const volumeFor = (clipFrom: number) =>
+    duck && windows.length
+      ? (frame: number) =>
+          clipVolumeAt(clipFrom + frame, windows, duck.duckVolume, duck.rampSeconds * fps)
+      : undefined;
 
   return (
     <AbsoluteFill style={{ backgroundColor: "black" }}>
@@ -121,7 +181,13 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
           <OffthreadVideo
             src={staticFile(`${timeline.id}/${c.key}`)}
             muted={timeline.muteSource}
+            volume={volumeFor(c.from)}
           />
+        </Sequence>
+      ))}
+      {narrations.map((n) => (
+        <Sequence key={n.key} from={n.from} durationInFrames={n.duration}>
+          <Audio src={staticFile(`${timeline.id}/${n.file}`)} />
         </Sequence>
       ))}
       {telops.map((t) => (
@@ -133,7 +199,10 @@ export const TelopVideo = ({ timeline }: { timeline: Timeline }) => {
         .filter((t) => t.sfx)
         .map((t) => (
           <Sequence key={`sfx-${t.key}`} from={t.from}>
-            <Audio src={staticFile(`${timeline.id}/sfx-${t.sfx}.wav`)} />
+            <Audio
+              src={staticFile(`${timeline.id}/sfx-${t.sfx}.wav`)}
+              volume={timeline.audio?.sfxVolume ?? 1}
+            />
           </Sequence>
         ))}
     </AbsoluteFill>

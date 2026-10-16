@@ -1,0 +1,134 @@
+{
+  "id": "test02",
+  "voice": "voice_7vk8m4sbxbks",
+  "model": "gemini-3.8-flash-tts",
+  "speed": 1.2,
+  "telops": [
+    {
+      "id": "T01",
+      "text": "大変！",
+      "file": "work/test02/narration/T01.wav",
+      "duration": 0.43
+    },
+    {
+      "id": "T02",
+      "text": "在庫限りで\n再入荷無しだって！",
+      "file": "work/test02/narration/T02.wav",
+      "duration": 2.08
+    },
+    {
+      "id": "T03",
+      "text": "朝から仕事で\nずっと三つ編みだったんだけど",
+      "file": "work/test02/narration/T03.wav",
+      "duration": 3.04
+    },
+    {
+      "id": "T04",
+      "text": "ちょうどいいから\nヘアアイロンの正直レビューします",
+      "file": "work/test02/narration/T04.wav",
+      "duration": 3.04
+    },
+    {
+      "id": "T05",
+      "text": "4段階になってて\n私は150度でやってみるね",
+      "file": "work/test02/narration/T05.wav",
+      "duration": 4.69
+    },
+    {
+      "id": "T06",
+      "text": "温めてる間に\n三つ編みほどきまーす",
+      "file": "work/test02/narration/T06.wav",
+      "duration": 2.86
+    },
+    {
+      "id": "T07",
+      "text": "付属のシュシュで\nアイロンがかけやすい量に分けて",
+      "file": "work/test02/narration/T07.wav",
+      "duration": 3.57
+    },
+    {
+      "id": "T08",
+      "text": "片側かけます！",
+      "file": "work/test02/narration/T08.wav",
+      "duration": 0.91
+    },
+    {
+      "id": "T09",
+      "text": "こんな感じ いきまーす",
+      "file": "work/test02/narration/T09.wav",
+      "duration": 2.63
+    },
+    {
+      "id": "T10",
+      "text": "髪をとかすだけで\nすごいでしょ！",
+      "file": "work/test02/narration/T10.wav",
+      "duration": 3.06
+    },
+    {
+      "id": "T11",
+      "text": "一気にストレート",
+      "file": "work/test02/narration/T11.wav",
+      "duration": 0.96
+    },
+    {
+      "id": "T12",
+      "text": "半分やった仕上がり",
+      "file": "work/test02/narration/T12.wav",
+      "duration": 1.19
+    },
+    {
+      "id": "T13",
+      "text": "やっぱりスチームだから\n髪の毛しっとりしてて",
+      "file": "work/test02/narration/T13.wav",
+      "duration": 3.02
+    },
+    {
+      "id": "T14",
+      "text": "艶が出た感じ！",
+      "file": "work/test02/narration/T14.wav",
+      "duration": 0.96
+    },
+    {
+      "id": "T15",
+      "text": "触っても\nあんまり熱くなくて",
+      "file": "work/test02/narration/T15.wav",
+      "duration": 2.13
+    },
+    {
+      "id": "T16",
+      "text": "火傷防止にも\n配慮されてるみたい",
+      "file": "work/test02/narration/T16.wav",
+      "duration": 1.93
+    },
+    {
+      "id": "T17",
+      "text": "しかもグローブも\nついてるから",
+      "file": "work/test02/narration/T17.wav",
+      "duration": 2.12
+    },
+    {
+      "id": "T18",
+      "text": "添えてる手も\n保護できるよ",
+      "file": "work/test02/narration/T18.wav",
+      "duration": 1.86
+    },
+    {
+      "id": "T19",
+      "text": "在庫がなくなっても\n再入荷しないみたいだから",
+      "file": "work/test02/narration/T19.wav",
+      "duration": 2.45
+    },
+    {
+      "id": "T20",
+      "text": "気になった人は\n後悔しないうちに",
+      "file": "work/test02/narration/T20.wav",
+      "duration": 2.11
+    },
+    {
+      "id": "T21",
+      "text": "下のリンクから\nよかったら見てみて",
+      "file": "work/test02/narration/T21.wav",
+      "duration": 1.89
+    }
+  ]
+}

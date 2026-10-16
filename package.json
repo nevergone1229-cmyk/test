@@ -10,7 +10,8 @@
     "draft": "node scripts/draft-timeline.mjs",
     "validate": "node scripts/validate-timeline.mjs",
     "render": "node scripts/render.mjs",
-    "test": "tsc --noEmit -p . && node scripts/validate-timeline.mjs"
+    "narrate": "node scripts/narrate.mjs",
+    "test": "tsc --noEmit -p . && node --test \"scripts/**/*.test.mjs\" && node scripts/validate-timeline.mjs"
   },
   "repository": {
     "type": "git",

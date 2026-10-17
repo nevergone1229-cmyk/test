@@ -159,7 +159,7 @@
     },
     {
       "id": "T09",
-      "text": "こんな感じ いきまーす",
+      "text": "こんな感じ",
       "clips": [
         {
           "segment": "N",
@@ -207,20 +207,6 @@
           "start": 2.2,
           "end": 4,
           "note": "まっすぐになった毛束"
-        }
-      ],
-      "sfx": "sparkle"
-    },
-    {
-      "id": "T12",
-      "text": "半分やった仕上がり",
-      "clips": [
-        {
-          "segment": "M",
-          "asset": "IMG_5708",
-          "start": 3,
-          "end": 5.6,
-          "note": "仕上がりの比較"
         }
       ],
       "sfx": "sparkle"

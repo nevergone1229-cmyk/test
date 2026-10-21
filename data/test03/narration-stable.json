@@ -1,0 +1,120 @@
+{
+  "id": "test03",
+  "voice": "voice_7vk8m4sbxbks",
+  "model": "gemini-3.8-flash-tts",
+  "speed": 1.2,
+  "method": "script.txt 全文を1つのテキストパートで1回生成(speechMetadata.style は全体共通の1つだけ: 50代女性が友達に話す落ち着いた口調、全編同じ声・高さ・速さ、語尾を上げない/伸ばさない)。前後の無音を切り詰め、atempo=1.2 を1回だけ。各行は語尾の小さな音を含めて次の行の直前まで切り出し、両端に短いフェード(0.01s/0.03s)。",
+  "source": "work/test03/narration-stable/take1.wav",
+  "telops": [
+    {
+      "id": "T01",
+      "text": "奇跡の布巾 正直レビュー！",
+      "file": "work/test03/narration-stable/lines/T01.wav",
+      "duration": 1.86,
+      "source": {
+        "start": 0.0,
+        "end": 1.863
+      }
+    },
+    {
+      "id": "T02",
+      "text": "こんなにペラペラ 透け透け！\n大丈夫！？",
+      "file": "work/test03/narration-stable/lines/T02.wav",
+      "duration": 2.58,
+      "source": {
+        "start": 2.432,
+        "end": 5.008
+      }
+    },
+    {
+      "id": "T03",
+      "text": "結構泡立つ！",
+      "file": "work/test03/narration-stable/lines/T03.wav",
+      "duration": 0.86,
+      "source": {
+        "start": 5.654,
+        "end": 6.514
+      }
+    },
+    {
+      "id": "T04",
+      "text": "油汚れのフライパン",
+      "file": "work/test03/narration-stable/lines/T04.wav",
+      "duration": 1.35,
+      "source": {
+        "start": 7.398,
+        "end": 8.748
+      }
+    },
+    {
+      "id": "T05",
+      "text": "布巾だから力を入れなくても\n隅々まで汚れを落としてピカピカ",
+      "file": "work/test03/narration-stable/lines/T05.wav",
+      "duration": 4.88,
+      "source": {
+        "start": 9.378,
+        "end": 14.258
+      }
+    },
+    {
+      "id": "T06",
+      "text": "IHコンロも\n水拭きで大丈夫そう！",
+      "file": "work/test03/narration-stable/lines/T06.wav",
+      "duration": 2.42,
+      "source": {
+        "start": 14.922,
+        "end": 17.346
+      }
+    },
+    {
+      "id": "T07",
+      "text": "泥だらけのお野菜も！",
+      "file": "work/test03/narration-stable/lines/T07.wav",
+      "duration": 1.27,
+      "source": {
+        "start": 18.262,
+        "end": 19.53
+      }
+    },
+    {
+      "id": "T08",
+      "text": "シンクの周りも\n狭いところまでお掃除できる！",
+      "file": "work/test03/narration-stable/lines/T08.wav",
+      "duration": 3.14,
+      "source": {
+        "start": 20.373,
+        "end": 23.512
+      }
+    },
+    {
+      "id": "T09",
+      "text": "洗ってまた使えるから\nコスパも良し！",
+      "file": "work/test03/narration-stable/lines/T09.wav",
+      "duration": 2.45,
+      "source": {
+        "start": 23.998,
+        "end": 26.448
+      }
+    },
+    {
+      "id": "T10",
+      "text": "大掃除前にリピ確定！",
+      "file": "work/test03/narration-stable/lines/T10.wav",
+      "duration": 2.02,
+      "source": {
+        "start": 27.214,
+        "end": 29.235
+      }
+    },
+    {
+      "id": "T11",
+      "text": "気になった人は\nお買い得のうちにチェックしてね！",
+      "file": "work/test03/narration-stable/lines/T11.wav",
+      "duration": 2.35,
+      "source": {
+        "start": 29.808,
+        "end": 32.162
+      }
+    }
+  ]
+}

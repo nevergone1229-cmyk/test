@@ -1,0 +1,120 @@
+{
+  "id": "test03",
+  "voice": "voice_7vk8m4sbxbks",
+  "model": "gemini-3.8-flash-tts",
+  "speed": 1,
+  "method": "台本11行を原文のまま1行1パートで1回のリクエストに入れ、各パートに speechMetadata.style(共通: 友達に話すような自然な会話調・1.2倍程度のテンポ・行間は短く / 行ごとの感情)を付けて生成。倍速処理なし(speed 1)。前後の無音を切り詰め、行間の無音で11区間に切り分け。",
+  "source": "work/test03/narration-natural/take2.wav",
+  "telops": [
+    {
+      "id": "T01",
+      "text": "奇跡の布巾、正直レビュー！",
+      "file": "work/test03/narration-natural/take2-lines/T01.wav",
+      "duration": 2.14,
+      "source": {
+        "start": 0,
+        "end": 2.14
+      }
+    },
+    {
+      "id": "T02",
+      "text": "こんなにペラペラ、透け透け！\n大丈夫！？",
+      "file": "work/test03/narration-natural/take2-lines/T02.wav",
+      "duration": 2.77,
+      "source": {
+        "start": 2.59,
+        "end": 5.35
+      }
+    },
+    {
+      "id": "T03",
+      "text": "結構泡立つ！",
+      "file": "work/test03/narration-natural/take2-lines/T03.wav",
+      "duration": 1.09,
+      "source": {
+        "start": 5.85,
+        "end": 6.94
+      }
+    },
+    {
+      "id": "T04",
+      "text": "油汚れのフライパン。",
+      "file": "work/test03/narration-natural/take2-lines/T04.wav",
+      "duration": 1.31,
+      "source": {
+        "start": 8.61,
+        "end": 9.91
+      }
+    },
+    {
+      "id": "T05",
+      "text": "布巾だから力を入れなくても、\n隅々まで汚れを落としてピカピカ",
+      "file": "work/test03/narration-natural/take2-lines/T05.wav",
+      "duration": 4.46,
+      "source": {
+        "start": 11.49,
+        "end": 15.95
+      }
+    },
+    {
+      "id": "T06",
+      "text": "IHコンロも、\n水拭きで大丈夫そう！",
+      "file": "work/test03/narration-natural/take2-lines/T06.wav",
+      "duration": 2.35,
+      "source": {
+        "start": 18.02,
+        "end": 20.37
+      }
+    },
+    {
+      "id": "T07",
+      "text": "泥だらけのお野菜も！",
+      "file": "work/test03/narration-natural/take2-lines/T07.wav",
+      "duration": 1.31,
+      "source": {
+        "start": 21.66,
+        "end": 22.98
+      }
+    },
+    {
+      "id": "T08",
+      "text": "シンクの周りも、\n狭いところまでお掃除できる！",
+      "file": "work/test03/narration-natural/take2-lines/T08.wav",
+      "duration": 4.05,
+      "source": {
+        "start": 23.83,
+        "end": 27.89
+      }
+    },
+    {
+      "id": "T09",
+      "text": "洗ってまた使えるから、\nコスパも良し！",
+      "file": "work/test03/narration-natural/take2-lines/T09.wav",
+      "duration": 2.48,
+      "source": {
+        "start": 28.56,
+        "end": 31.05
+      }
+    },
+    {
+      "id": "T10",
+      "text": "大掃除前にリピ確定！",
+      "file": "work/test03/narration-natural/take2-lines/T10.wav",
+      "duration": 1.56,
+      "source": {
+        "start": 31.76,
+        "end": 33.32
+      }
+    },
+    {
+      "id": "T11",
+      "text": "気になった人は、\nお買い得のうちにチェックしてね！",
+      "file": "work/test03/narration-natural/take2-lines/T11.wav",
+      "duration": 2.61,
+      "source": {
+        "start": 34.28,
+        "end": 36.89
+      }
+    }
+  ]
+}

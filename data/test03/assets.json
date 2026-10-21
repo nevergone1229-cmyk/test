@@ -1,0 +1,139 @@
+{
+  "id": "test03",
+  "assets": {
+    "IMG_5773": {
+      "file": "IMG_5773.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5773.jpg",
+      "segments": [],
+      "duration": 17.55,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5774": {
+      "file": "IMG_5774.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5774.jpg",
+      "segments": [],
+      "duration": 13.47,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5772": {
+      "file": "IMG_5772.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5772.jpg",
+      "segments": [],
+      "duration": 16.91,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5775": {
+      "file": "IMG_5775.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5775.jpg",
+      "segments": [],
+      "duration": 9.41,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5787": {
+      "file": "IMG_5787.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5787.jpg",
+      "segments": [],
+      "duration": 13.8,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5782": {
+      "file": "IMG_5782.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5782.jpg",
+      "segments": [],
+      "duration": 5.07,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5779": {
+      "file": "IMG_5779.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5779.jpg",
+      "segments": [],
+      "duration": 10.84,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5770": {
+      "file": "IMG_5770.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5770.jpg",
+      "segments": [],
+      "duration": 14.14,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": [
+        0.03
+      ]
+    },
+    "IMG_5786": {
+      "file": "IMG_5786.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5786.jpg",
+      "segments": [],
+      "duration": 5.3,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5769": {
+      "file": "IMG_5769.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5769.jpg",
+      "segments": [],
+      "duration": 9.84,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    },
+    "IMG_5789": {
+      "file": "IMG_5789.mov",
+      "type": "video",
+      "sheet": "../../work/test03/sheets/IMG_5789.jpg",
+      "segments": [],
+      "duration": 12.84,
+      "width": 1080,
+      "height": 1920,
+      "hdr": true,
+      "hasAudio": true,
+      "sceneChanges": []
+    }
+  }
+}

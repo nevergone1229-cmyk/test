@@ -8,7 +8,7 @@
   "telops": [
     {
       "id": "T01",
-      "text": "奇跡の布巾、正直レビュー！",
+      "text": "奇跡の布巾 正直レビュー！",
       "file": "work/test03/narration-natural/take2-lines/T01.wav",
       "duration": 2.14,
       "source": {
@@ -18,7 +18,7 @@
     },
     {
       "id": "T02",
-      "text": "こんなにペラペラ、透け透け！\n大丈夫！？",
+      "text": "こんなにペラペラ 透け透け！\n大丈夫！？",
       "file": "work/test03/narration-natural/take2-lines/T02.wav",
       "duration": 2.77,
       "source": {
@@ -38,7 +38,7 @@
     },
     {
       "id": "T04",
-      "text": "油汚れのフライパン。",
+      "text": "油汚れのフライパン",
       "file": "work/test03/narration-natural/take2-lines/T04.wav",
       "duration": 1.31,
       "source": {
@@ -48,7 +48,7 @@
     },
     {
       "id": "T05",
-      "text": "布巾だから力を入れなくても、\n隅々まで汚れを落としてピカピカ",
+      "text": "布巾だから力を入れなくても\n隅々まで汚れを落としてピカピカ",
       "file": "work/test03/narration-natural/take2-lines/T05.wav",
       "duration": 4.46,
       "source": {
@@ -58,7 +58,7 @@
     },
     {
       "id": "T06",
-      "text": "IHコンロも、\n水拭きで大丈夫そう！",
+      "text": "IHコンロも\n水拭きで大丈夫そう！",
       "file": "work/test03/narration-natural/take2-lines/T06.wav",
       "duration": 2.35,
       "source": {
@@ -78,7 +78,7 @@
     },
     {
       "id": "T08",
-      "text": "シンクの周りも、\n狭いところまでお掃除できる！",
+      "text": "シンクの周りも\n狭いところまでお掃除できる！",
       "file": "work/test03/narration-natural/take2-lines/T08.wav",
       "duration": 4.05,
       "source": {
@@ -88,7 +88,7 @@
     },
     {
       "id": "T09",
-      "text": "洗ってまた使えるから、\nコスパも良し！",
+      "text": "洗ってまた使えるから\nコスパも良し！",
       "file": "work/test03/narration-natural/take2-lines/T09.wav",
       "duration": 2.48,
       "source": {
@@ -108,7 +108,7 @@
     },
     {
       "id": "T11",
-      "text": "気になった人は、\nお買い得のうちにチェックしてね！",
+      "text": "気になった人は\nお買い得のうちにチェックしてね！",
       "file": "work/test03/narration-natural/take2-lines/T11.wav",
       "duration": 2.61,
       "source": {
